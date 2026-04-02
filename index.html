@@ -997,43 +997,46 @@ Tablet menelepon
 import 'dart:math';
 
 class MathUtils {
-static int faktorial(int n) {
-if(n <= 1) return 1;
-return n * faktorial(n-1);
-}
 
-static bool cekPrima(int n) {
-if(n <= 1) return false;
-for(int i = 2; i <= sqrt(n); i++) {
-if(n % i == 0) return false;
-}
-return true;
-}
+  static Random rand = Random(1);
 
-static double pembulatan(double angka, int desimal) {
-double scale = pow(10, desimal).toDouble();
-return (angka * scale).round() / scale;
-}
+  static int faktorial(int n) {
+    if(n <= 1) return 1;
+    return n * faktorial(n-1);
+  }
 
-static int randomInt(int min, int max) {
-return min + Random().nextInt(max - min + 1);
-}
+  static bool cekPrima(int n) {
+    if(n <= 1) return false;
+    for(int i = 2; i <= sqrt(n); i++) {
+      if(n % i == 0) return false;
+    }
+    return true;
+  }
 
-static double rataRata(List<int> list) {
-int total = list.reduce((a, b) => a + b);
-return total / list.length;
-}
+  static double pembulatan(double angka, int desimal) {
+    double scale = pow(10, desimal).toDouble();
+    return (angka * scale).round() / scale;
+  }
 
-static double median(List<int> list) {
-list.sort();
-int n = list.length;
+  static int randomInt(int min, int max) {
+    return min + rand.nextInt(max - min + 1);
+  }
 
-if(n % 2 == 0) {
-return (list[n ~/ 2 - 1] + list[n ~/ 2]) / 2;
-} else {
-return list[n ~/ 2].toDouble();
-}
-}
+  static double rataRata(List<int> list) {
+    int total = list.reduce((a, b) => a + b);
+    return total / list.length;
+  }
+
+  static double median(List<int> list) {
+    List<int> sorted = List.from(list)..sort();
+    int n = sorted.length;
+
+    if(n % 2 == 0) {
+      return (sorted[n ~/ 2 - 1] + sorted[n ~/ 2]) / 2;
+    } else {
+      return sorted[n ~/ 2].toDouble();
+    }
+  }
 }
 
 void main() {
