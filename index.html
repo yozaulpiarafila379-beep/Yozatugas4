@@ -688,29 +688,29 @@ lingkaran.info();
 /// ================================
 /// Bonus 1
 
-abstractclassPekerja{
-Stringnama;
+abstract class Pekerja {
+String nama;
 
 Pekerja(this.nama);
 
-voidbekerja();
+void bekerja();
 
-voidinfo() {
-print("Nama:$nama");
+void info() {
+print("Nama: $nama");
 }
 }
 
-classProgrammerextendsPekerja{
-Programmer(Stringnama):super(nama);
+class Programmer extends Pekerja {
+Programmer(String nama) : super(nama);
 
 @override
-voidbekerja() {
-print("$namabekerja sebagai Programmer");
+void bekerja() {
+print("$nama bekerja sebagai Programmer");
 }
 }
 
-voidmain() {
-Programmerp=Programmer("Andi");
+void main() {
+Programmer p = Programmer("Andi");
 p.info();
 p.bekerja();
 }
@@ -740,44 +740,44 @@ Andi bekerja sebagai Programmer
 /// ================================
 /// Bonus 2
 
-abstractclassPekerja{
-Stringnama;
+abstract class Pekerja {
+String nama;
 Pekerja(this.nama);
 
-voidbekerja();
+void bekerja();
 }
 
-classProgrammerextendsPekerja{
-Programmer(Stringnama):super(nama);
-
-@override
-voidbekerja() {
-print("$namaadalah Programmer");
-}
-}
-
-classDokterextendsPekerja{
-Dokter(Stringnama):super(nama);
+class Programmer extends Pekerja {
+Programmer(String nama) : super(nama);
 
 @override
-voidbekerja() {
-print("$namaadalah Dokter");
+void bekerja() {
+print("$nama adalah Programmer");
 }
 }
 
-classGuruextendsPekerja{
-Guru(Stringnama):super(nama);
+class Dokter extends Pekerja {
+Dokter(String nama) : super(nama);
 
 @override
-voidbekerja() {
-print("$namaadalah Guru");
+void bekerja() {
+print("$nama adalah Dokter");
 }
 }
 
-voidmain() {
-Programmerp=Programmer("Andi");
-Dokterd=Dokter("Budi");
-Gurug=Guru("Citra");
+class Guru extends Pekerja {
+Guru(String nama) : super(nama);
+
+@override
+void bekerja() {
+print("$nama adalah Guru");
+}
+}
+
+void main() {
+Programmer p = Programmer("Andi");
+Dokter d = Dokter("Budi");
+Guru g = Guru("Citra");
 
 p.bekerja();
 d.bekerja();
@@ -810,49 +810,49 @@ Citra adalah Guru
 /// ================================
 /// Bonus 3
 
-abstractclassPekerja{
-Stringnama;
+abstract class Pekerja {
+String nama;
 Pekerja(this.nama);
 
-voidbekerja();
+void bekerja();
 }
 
-classProgrammerextendsPekerja{
-Programmer(Stringnama):super(nama);
-
-@override
-voidbekerja() {
-print("$namasedang coding");
-}
-}
-
-classDokterextendsPekerja{
-Dokter(Stringnama):super(nama);
+class Programmer extends Pekerja {
+Programmer(String nama) : super(nama);
 
 @override
-voidbekerja() {
-print("$namasedang mengobati pasien");
+void bekerja() {
+print("$nama sedang coding");
 }
 }
 
-classGuruextendsPekerja{
-Guru(Stringnama):super(nama);
+class Dokter extends Pekerja {
+Dokter(String nama) : super(nama);
 
 @override
-voidbekerja() {
-print("$namasedang mengajar");
+void bekerja() {
+print("$nama sedang mengobati pasien");
 }
 }
 
-voidmain() {
-List<Pekerja>daftar=[
+class Guru extends Pekerja {
+Guru(String nama) : super(nama);
+
+@override
+void bekerja() {
+print("$nama sedang mengajar");
+}
+}
+
+void main() {
+List<Pekerja> daftar = [
 Programmer("Andi"),
 Dokter("Budi"),
 Guru("Citra"),
 ];
 
-for(varpindaftar) {
-p.bekerja();// polymorphism
+for(var p in daftar) {
+p.bekerja(); // polymorphism
 }
 }
 
@@ -882,37 +882,37 @@ Citra sedang mengajar
 /// ================================
 /// Bonus 4
 
-abstractclassKomputer{
-voidmenjalankanProgram();
+abstract class Komputer {
+void menjalankanProgram();
 }
 
-abstractclassKamera{
-voidambilFoto();
+abstract class Kamera {
+void ambilFoto();
 }
 
-abstractclassTelepon{
-voidmenelepon();
+abstract class Telepon {
+void menelepon();
 }
 
-classTabletimplementsKomputer,Kamera,Telepon{
+class Tablet implements Komputer, Kamera, Telepon {
 @override
-voidmenjalankanProgram() {
+void menjalankanProgram() {
 print("Tablet menjalankan program");
 }
 
 @override
-voidambilFoto() {
+void ambilFoto() {
 print("Tablet mengambil foto");
 }
 
 @override
-voidmenelepon() {
+void menelepon() {
 print("Tablet menelepon");
 }
 }
 
-voidmain() {
-Tablettablet=Tablet();
+void main() {
+Tablet tablet = Tablet();
 tablet.menjalankanProgram();
 tablet.ambilFoto();
 tablet.menelepon();
@@ -944,55 +944,55 @@ Tablet menelepon
 /// ================================
 /// Bonus 5
 
-import'dart:math';
+import 'dart:math';
 
-classMathUtils{
-staticintfaktorial(intn) {
-if(n<=1)return1;
-returnn*faktorial(n-1);
+class MathUtils {
+static int faktorial(int n) {
+if(n <= 1) return 1;
+return n * faktorial(n-1);
 }
 
-staticboolcekPrima(intn) {
-if(n<=1)returnfalse;
-for(inti=2;i<=sqrt(n);i++) {
-if(n%i==0)returnfalse;
+static bool cekPrima(int n) {
+if(n <= 1) return false;
+for(int i = 2; i <= sqrt(n); i++) {
+if(n % i == 0) return false;
 }
-returntrue;
-}
-
-staticdoublepembulatan(doubleangka,intdesimal) {
-doublescale=pow(10,desimal).toDouble();
-return(angka*scale).round()/scale;
+return true;
 }
 
-staticintrandomInt(intmin,intmax) {
-returnmin+Random().nextInt(max-min+1);
+static double pembulatan(double angka, int desimal) {
+double scale = pow(10, desimal).toDouble();
+return (angka * scale).round() / scale;
 }
 
-staticdoublerataRata(List<int>list) {
-inttotal=list.reduce((a,b)=>a+b);
-returntotal/list.length;
+static int randomInt(int min, int max) {
+return min + Random().nextInt(max - min + 1);
 }
 
-staticdoublemedian(List<int>list) {
+static double rataRata(List<int> list) {
+int total = list.reduce((a, b) => a + b);
+return total / list.length;
+}
+
+static double median(List<int> list) {
 list.sort();
-intn=list.length;
+int n = list.length;
 
-if(n%2==0) {
-return(list[n~/2-1]+list[n~/2])/2;
-}else{
-returnlist[n~/2].toDouble();
+if(n % 2 == 0) {
+return (list[n ~/ 2 - 1] + list[n ~/ 2]) / 2;
+} else {
+return list[n ~/ 2].toDouble();
 }
 }
 }
 
-voidmain() {
-print("Faktorial 5 =${MathUtils.faktorial(5)}");
-print("Prima 7 =${MathUtils.cekPrima(7)}");
-print("Pembulatan =${MathUtils.pembulatan(3.14159,2)}");
-print("Random =${MathUtils.randomInt(1,10)}");
-print("Rata-rata =${MathUtils.rataRata([10,20,30,40,50])}");
-print("Median =${MathUtils.median([10,20,30,40,50])}");
+void main() {
+print("Faktorial 5 = ${MathUtils.faktorial(5)}");
+print("Prima 7 = ${MathUtils.cekPrima(7)}");
+print("Pembulatan = ${MathUtils.pembulatan(3.14159, 2)}");
+print("Random = ${MathUtils.randomInt(1, 10)}");
+print("Rata-rata = ${MathUtils.rataRata([10, 20, 30, 40, 50])}");
+print("Median = ${MathUtils.median([10, 20, 30, 40, 50])}");
 }
 
 /*
@@ -1009,4 +1009,3 @@ Median = 30
 <button class="button" onclick="runDart('f14','https://dartpad.dev/0011f7b4b5bfed2a0ab49e4c9e12229d')">Run Dart</button>
 <iframe id="f14"></iframe>
 </div>
-  
