@@ -163,7 +163,7 @@ function runDart(id, link){
 <!-- 1 -->
 <div class="section">
 <h2>1. Class Hewan (Polimorfisme)</h2>
-<p>Kode ini mendemonstrasikan **polimorfisme** dan **abstraksi**. Kelas abstrak `Hewan` memiliki metode `bersuara()` yang belum diimplementasikan. Subkelas seperti `Kucing`, `Anjing`, dan `Burung` kemudian menyediakan implementasi unik untuk `bersuara()`, menunjukkan perilaku yang berbeda dari metode yang sama.</p>
+<p>Kode ini mendemonstrasikan polimorfisme dan abstraksi. Kelas abstrak Hewan memiliki metode bersuara() yang belum diimplementasikan. Subkelas seperti Kucing, Anjing, dan Burung kemudian menyediakan implementasi unik untuk bersuara(), menunjukkan perilaku yang berbeda dari metode yang sama.</p>
 <h3>Kode Dart:</h3>
 <div class="code-box">
 <pre><code>
@@ -234,7 +234,7 @@ void main() {
 <!-- 2 -->
 <div class="section">
 <h2>2. Class Bentuk (Polimorfisme)</h2>
-<p>Ini adalah contoh **polimorfisme** melalui *method overriding*. Kelas `Bentuk` memiliki metode `gambar()` default. `Lingkaran` dan `Persegi` menimpa (override) metode ini untuk menampilkan pesan penggambaran yang spesifik untuk bentuk mereka masing-masing.</p>
+<p>Ini adalah contoh polimorfisme melalui method overriding. Kelas Bentuk memiliki metode gambar() default. Lingkaran dan Persegi menimpa (override) metode ini untuk menampilkan pesan penggambaran yang spesifik untuk bentuk mereka masing-masing.</p>
 <h3>Kode Dart:</h3>
 <div class="code-box">
 <pre><code>
@@ -286,7 +286,7 @@ void main() {
 <!-- 3 -->
 <div class="section">
 <h2>3. Class Kendaraan (Operator `is` & `as`)</h2>
-<p>Kode ini menunjukkan cara menggunakan operator **`is`** untuk memeriksa tipe objek pada saat *runtime* dan operator **`as`** untuk melakukan *type casting* atau perubahan tipe data. Penggunaan `as?` untuk *safe casting* mencegah error jika tipe tidak cocok.</p>
+<p>Kode ini menunjukkan cara menggunakan operator is untuk memeriksa tipe objek pada saat runtime dan operator as untuk melakukan type casting atau perubahan tipe data. Penggunaan as? untuk safe casting mencegah error jika tipe tidak cocok.</p>
 <h3>Kode Dart:</h3>
 <div class="code-box">
 <pre><code>
@@ -332,7 +332,7 @@ void main() {
 <!-- 4 -->
 <div class="section">
 <h2>4. Abstract Class Kendaraan</h2>
-<p>Contoh **abstraksi**. Kelas `Kendaraan` dideklarasikan sebagai abstrak dan memiliki metode abstrak `start()`, yang berarti kelas ini tidak bisa diinstansiasi langsung dan `start()` harus diimplementasikan oleh kelas turunan (contohnya `Mobil`). Metode `stop()` adalah konkret dan memiliki implementasi langsung.</p>
+<p>Contoh abstraksi. Kelas Kendaraan dideklarasikan sebagai abstrak dan memiliki metode abstrak start(), yang berarti kelas ini tidak bisa diinstansiasi langsung dan start() harus diimplementasikan oleh kelas turunan (contohnya Mobil). Metode stop() adalah konkret dan memiliki implementasi langsung.</p>
 <h3>Kode Dart:</h3>
 <div class="code-box">
 <pre><code>
@@ -388,7 +388,7 @@ void main() {
 <!-- 5 -->
 <div class="section">
 <h2>5. Class AlatMusik (Abstraksi)</h2>
-<p>Kode ini mendemonstrasikan kelas **abstrak** `AlatMusik` dengan metode `mainkan()` yang abstrak (harus diimplementasikan) dan metode `info()` yang konkret (sudah memiliki implementasi). Kelas `Gitar` mewarisi dari `AlatMusik` dan mengimplementasikan `mainkan()` secara spesifik.</p>
+<p>Kode ini mendemonstrasikan kelas abstrak AlatMusik dengan metode mainkan() yang abstrak (harus diimplementasikan) dan metode info() yang konkret (sudah memiliki implementasi). Kelas Gitar mewarisi dari AlatMusik dan mengimplementasikan mainkan() secara spesifik.</p>
 <h3>Kode Dart:</h3>
 <div class="code-box">
 <pre><code>
@@ -444,7 +444,7 @@ void main() {
 <!-- 6 -->
 <div class="section">
 <h2>6. Class Pesawat (Interface)</h2>
-<p>Menunjukkan konsep **interface** dalam Dart. Kelas `Pesawat` *mengimplementasikan* `Kendaraan` dan `Terbang` (yang keduanya adalah kelas abstrak yang bertindak sebagai interface). Ini berarti `Pesawat` harus menyediakan implementasi untuk semua metode yang didefinisikan dalam kedua "interface" tersebut.</p>
+<p>Menunjukkan konsep interface dalam Dart. Kelas Pesawat mengimplementasikan Kendaraan dan Terbang (yang keduanya adalah kelas abstrak yang bertindak sebagai interface). Ini berarti Pesawat harus menyediakan implementasi untuk semua metode yang didefinisikan dalam kedua "interface" tersebut.</p>
 <h3>Kode Dart:</h3>
 <div class="code-box">
 <pre><code>
@@ -498,10 +498,20 @@ void main() {
 <!-- 7 -->
 <div class="section">
 <h2>7. Class MathUtils (Static)</h2>
-<p>Ini adalah contoh penggunaan **`static` member**. `MathUtils` berisi variabel statis (`pi`) dan metode statis (`add`). Anggota statis ini dapat diakses langsung melalui nama kelas (`MathUtils.pi`, `MathUtils.add`) tanpa perlu membuat objek `MathUtils`.</p>
+<p>Ini adalah contoh penggunaan static member. MathUtils berisi variabel statis (pi) dan metode statis (add). Anggota statis ini dapat diakses langsung melalui nama kelas (MathUtils.pi, MathUtils.add) tanpa perlu membuat objek MathUtils.</p>
 <h3>Kode Dart:</h3>
 <div class="code-box">
 <pre><code>
 /// ================================
 /// Nama : Yoza Ulpia Rafila
-///
+/// NIM        : 251410004
+/// Kelas : SI2A
+/// ================================
+
+class MathUtils {
+  // Static variable
+  static double pi = 3.14;
+
+  // Static method
+  static int add(int a, int b) {
+    return a
