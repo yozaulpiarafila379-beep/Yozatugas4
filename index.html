@@ -76,244 +76,231 @@ function runDart(id, link){
 <p>Kelas: SI2A</p>
 </div>
 
-<!-- 9 -->
+<!-- 1 -->
 <div class="card">
-<h2>9. Class Bentuk Geometri</h2>
-<p>Polimorfisme menghitung luas dan keliling.</p>
+<h2>1. Class Hewan</h2>
+<p><b>Pengertian:</b> Polimorfisme adalah kemampuan satu method memiliki banyak bentuk. Pada contoh ini setiap class turunan Hewan memiliki method bersuara() yang berbeda.</p>
 <div class="code-box">
-abstract class Bentuk {
-  double hitungLuas();
-  double hitungKeliling();
-
-  void info() {
-    print('Luas: ${hitungLuas()}, Keliling: ${hitungKeliling()}');
-  }
+abstract class Hewan {
+  String nama = "Hewan";
+  void bersuara();
 }
 
-class Persegi extends Bentuk {
-  double sisi;
-  Persegi(this.sisi);
+class Kucing extends Hewan {
+  Kucing(){ nama="Kucing"; }
+  void bersuara(){ print("$nama: Meong"); }
+}
 
-  double hitungLuas() => sisi * sisi;
-  double hitungKeliling() => 4 * sisi;
+class Anjing extends Hewan {
+  Anjing(){ nama="Anjing"; }
+  void bersuara(){ print("$nama: Guk guk"); }
+}
+
+class Burung extends Hewan {
+  Burung(){ nama="Burung"; }
+  void bersuara(){ print("$nama: Cuit cuit"); }
+}
+
+void main(){
+  List<Hewan> daftar=[Kucing(),Anjing(),Burung()];
+  for(var h in daftar){ h.bersuara(); }
+}
+</div>
+<button onclick="runDart('f1','https://dartpad.dev/embed-flutter.html?id=569d91a7d55a7348d68fff15153e81f8')">Run Dart</button>
+<iframe id="f1"></iframe>
+</div>
+
+<!-- 2 -->
+<div class="card">
+<h2>2. Class Bentuk</h2>
+<p><b>Pengertian:</b> Polimorfisme method overriding, yaitu method yang sama tetapi memiliki implementasi berbeda pada class turunan.</p>
+<div class="code-box">
+class Bentuk {
+  void gambar(){ print("Menggambar bentuk"); }
 }
 
 class Lingkaran extends Bentuk {
-  double radius;
-  Lingkaran(this.radius);
-
-  double hitungLuas() => 3.14 * radius * radius;
-  double hitungKeliling() => 2 * 3.14 * radius;
+  void gambar(){ print("Menggambar lingkaran"); }
 }
 
-void main() {
-  Persegi p = Persegi(4);
-  Lingkaran l = Lingkaran(7);
-  p.info();
-  l.info();
+class Persegi extends Bentuk {
+  void gambar(){ print("Menggambar persegi"); }
+}
+
+void main(){
+  List<Bentuk> list=[Lingkaran(),Persegi()];
+  for(var b in list){ b.gambar(); }
 }
 </div>
-<button onclick="runDart('f9','https://dartpad.dev/embed-flutter.html?id=c350c82b3cc671251063832e6b0c19df')">Run Dart</button>
-<iframe id="f9"></iframe>
+<button onclick="runDart('f2','https://dartpad.dev/embed-flutter.html?id=51f1e01964dbc6a42f15ae6de6d01cd7')">Run Dart</button>
+<iframe id="f2"></iframe>
 </div>
 
-<!-- 10 -->
+<!-- 3 -->
 <div class="card">
-<h2>10. Class Programmer</h2>
-<p>Inheritance dari class Pekerja.</p>
+<h2>3. Class Kendaraan</h2>
+<p><b>Pengertian:</b> Operator <b>is</b> digunakan untuk mengecek tipe object dan <b>as</b> digunakan untuk casting tipe object.</p>
 <div class="code-box">
-abstract class Pekerja {
+class Kendaraan {}
+
+class Mobil extends Kendaraan {
+  void klakson(){ print("Tin!"); }
+}
+
+void main(){
+  Kendaraan k=Mobil();
+
+  if(k is Mobil){ k.klakson(); }
+  (k as Mobil?)?.klakson();
+}
+</div>
+<button onclick="runDart('f3','https://dartpad.dev/embed-flutter.html?id=985fc039a838958b54b59daced97342b')">Run Dart</button>
+<iframe id="f3"></iframe>
+</div>
+
+<!-- 4 -->
+<div class="card">
+<h2>4. Abstract Kendaraan</h2>
+<p><b>Pengertian:</b> Abstraksi adalah proses menyembunyikan detail dan hanya menampilkan fungsi utama. Abstract class tidak bisa dibuat objek.</p>
+<div class="code-box">
+abstract class Kendaraan{
+  void jalan();
+}
+
+class Mobil extends Kendaraan{
+  void jalan(){ print("Mobil berjalan"); }
+}
+
+void main(){
+  Mobil m=Mobil();
+  m.jalan();
+}
+</div>
+<button onclick="runDart('f4','https://dartpad.dev/embed-flutter.html?id=f9e85ea1387eae713f9048757cd5c97d')">Run Dart</button>
+<iframe id="f4"></iframe>
+</div>
+
+<!-- 5 -->
+<div class="card">
+<h2>5. Class AlatMusik</h2>
+<p><b>Pengertian:</b> Abstract class dapat memiliki method abstract dan method biasa (concrete).</p>
+<div class="code-box">
+abstract class AlatMusik{
   String nama;
-  Pekerja(this.nama);
-  void bekerja();
-}
+  AlatMusik(this.nama);
 
-class Programmer extends Pekerja {
-  Programmer(String nama) : super(nama);
+  void mainkan();
 
-  void bekerja() {
-    print("$nama bekerja sebagai Programmer");
+  void info(){
+    print("Alat musik $nama");
   }
 }
 
-void main() {
-  Programmer p = Programmer("Andi");
-  p.bekerja();
+class Gitar extends AlatMusik{
+  Gitar(String nama):super(nama);
+
+  void mainkan(){
+    print("Gitar berbunyi");
+  }
+}
+
+void main(){
+  Gitar g=Gitar("Akustik");
+  g.info();
+  g.mainkan();
 }
 </div>
-<button onclick="runDart('f10','https://dartpad.dev/embed-flutter.html?id=192859027ed0a9a63a7bcb9ffce7bbd4')">Run Dart</button>
-<iframe id="f10"></iframe>
+<button onclick="runDart('f5','https://dartpad.dev/embed-flutter.html?id=4cbcd9a48cdf3ba3299256cd07e38fd4')">Run Dart</button>
+<iframe id="f5"></iframe>
 </div>
 
-<!-- 11 -->
+<!-- 6 -->
 <div class="card">
-<h2>11. Multi Class Pekerja</h2>
-<p>Polimorfisme banyak class turunan.</p>
+<h2>6. Class Pesawat</h2>
+<p><b>Pengertian:</b> Interface digunakan untuk membuat kontrak method yang harus diimplementasikan oleh class lain.</p>
 <div class="code-box">
-abstract class Pekerja {
-  String nama;
-  Pekerja(this.nama);
-  void bekerja();
+abstract class Kendaraan{ void jalan(); }
+abstract class Terbang{ void terbang(); }
+
+class Pesawat extends Kendaraan implements Terbang{
+  void jalan(){ print("Pesawat berjalan"); }
+  void terbang(){ print("Pesawat terbang"); }
 }
 
-class Programmer extends Pekerja {
-  Programmer(String nama) : super(nama);
-  void bekerja() => print("$nama adalah Programmer");
-}
-
-class Dokter extends Pekerja {
-  Dokter(String nama) : super(nama);
-  void bekerja() => print("$nama adalah Dokter");
-}
-
-class Guru extends Pekerja {
-  Guru(String nama) : super(nama);
-  void bekerja() => print("$nama adalah Guru");
-}
-
-void main() {
-  Programmer p = Programmer("Andi");
-  Dokter d = Dokter("Budi");
-  Guru g = Guru("Citra");
-
-  p.bekerja();
-  d.bekerja();
-  g.bekerja();
+void main(){
+  Pesawat p=Pesawat();
+  p.jalan();
+  p.terbang();
 }
 </div>
-<button onclick="runDart('f11','https://dartpad.dev/embed-flutter.html?id=3c0d98f4423954c616b846a6e244a9d2')">Run Dart</button>
-<iframe id="f11"></iframe>
+<button onclick="runDart('f6','https://dartpad.dev/embed-flutter.html?id=3b8dc0f6aea58918e73caa74605041d2')">Run Dart</button>
+<iframe id="f6"></iframe>
 </div>
 
-<!-- 12 -->
+<!-- 7 -->
 <div class="card">
-<h2>12. Polimorfisme List</h2>
-<p>List berisi banyak object berbeda (polimorfisme).</p>
+<h2>7. MathUtils</h2>
+<p><b>Pengertian:</b> Static digunakan agar method atau variabel bisa dipanggil tanpa membuat objek.</p>
 <div class="code-box">
-abstract class Pekerja {
-  String nama;
-  Pekerja(this.nama);
-  void bekerja();
+class MathUtils{
+  static double pi=3.14;
+  static int add(int a,int b)=>a+b;
 }
 
-class Programmer extends Pekerja {
-  Programmer(String nama) : super(nama);
-  void bekerja() => print("$nama sedang coding");
-}
-
-class Dokter extends Pekerja {
-  Dokter(String nama) : super(nama);
-  void bekerja() => print("$nama sedang mengobati pasien");
-}
-
-class Guru extends Pekerja {
-  Guru(String nama) : super(nama);
-  void bekerja() => print("$nama sedang mengajar");
-}
-
-void main() {
-  List<Pekerja> daftar = [
-    Programmer("Andi"),
-    Dokter("Budi"),
-    Guru("Citra"),
-  ];
-
-  for (var p in daftar) {
-    p.bekerja();
-  }
+void main(){
+  print(MathUtils.pi);
+  print(MathUtils.add(10,20));
 }
 </div>
-<button onclick="runDart('f12','https://dartpad.dev/embed-flutter.html?id=1d346ba1594eeb7437e3492f50ce60e0')">Run Dart</button>
-<iframe id="f12"></iframe>
+<button onclick="runDart('f7','https://dartpad.dev/embed-flutter.html?id=f2850564f91e2111c095f1f7061815ca')">Run Dart</button>
+<iframe id="f7"></iframe>
 </div>
 
-<!-- 13 -->
+<!-- 8 -->
 <div class="card">
-<h2>13. Class Tablet</h2>
-<p>Multiple interface.</p>
+<h2>8. Metode Pembayaran</h2>
+<p><b>Pengertian:</b> Interface memungkinkan banyak class memiliki method yang sama tetapi implementasi berbeda.</p>
 <div class="code-box">
-abstract class Komputer {
-  void menjalankanProgram();
+abstract class MetodePembayaran{
+  void bayar(double jumlah);
 }
 
-abstract class Kamera {
-  void ambilFoto();
-}
-
-abstract class Telepon {
-  void menelepon();
-}
-
-class Tablet implements Komputer, Kamera, Telepon {
-  void menjalankanProgram() {
-    print("Tablet menjalankan program");
-  }
-
-  void ambilFoto() {
-    print("Tablet mengambil foto");
-  }
-
-  void menelepon() {
-    print("Tablet menelepon");
+class KartuKredit implements MetodePembayaran{
+  void bayar(double jumlah){
+    print("Bayar kartu kredit");
   }
 }
 
-void main() {
-  Tablet tablet = Tablet();
-  tablet.menjalankanProgram();
-  tablet.ambilFoto();
-  tablet.menelepon();
+class EWallet implements MetodePembayaran{
+  void bayar(double jumlah){
+    print("Bayar ewallet");
+  }
+}
+
+void main(){
+  KartuKredit k=KartuKredit();
+  EWallet e=EWallet();
+  k.bayar(10000);
+  e.bayar(5000);
 }
 </div>
-<button onclick="runDart('f13','https://dartpad.dev/embed-flutter.html?id=5e1bf40dc32c12ec326f796f912dbbd1')">Run Dart</button>
-<iframe id="f13"></iframe>
+<button onclick="runDart('f8','https://dartpad.dev/embed-flutter.html?id=30d7eb58b28945ee4998758223c35531')">Run Dart</button>
+<iframe id="f8"></iframe>
 </div>
 
-<!-- 14 -->
-<div class="card">
-<h2>14. MathUtils Advanced</h2>
-<p>Static method matematika.</p>
-<div class="code-box">
-import 'dart:math';
-
-class MathUtils {
-  static int faktorial(int n) {
-    if (n <= 1) return 1;
-    return n * faktorial(n - 1);
-  }
-
-  static bool cekPrima(int n) {
-    if (n <= 1) return false;
-    for (int i = 2; i <= sqrt(n); i++) {
-      if (n % i == 0) return false;
-    }
-    return true;
-  }
-
-  static double rataRata(List<int> list) {
-    int total = list.reduce((a, b) => a + b);
-    return total / list.length;
-  }
-}
-
-void main() {
-  print(MathUtils.faktorial(5));
-  print(MathUtils.cekPrima(7));
-  print(MathUtils.rataRata([10,20,30,40]));
-}
-</div>
-<button onclick="runDart('f14','https://dartpad.dev/embed-flutter.html?id=0011f7b4b5bfed2a0ab49e4c9e12229d')">Run Dart</button>
-<iframe id="f14"></iframe>
-</div>
+<!-- 9–14 -->
+<!-- Biarkan sama seperti punyamu (Bentuk Geometri, Programmer, Multi Pekerja, Polimorfisme List, Tablet, MathUtils Advanced) -->
 
 <!-- Kesimpulan -->
 <div class="card">
 <h2>Kesimpulan</h2>
 <p>
-Polimorfisme adalah kemampuan method memiliki banyak bentuk, sedangkan abstraksi adalah proses menyembunyikan detail implementasi.
-Inheritance adalah pewarisan dari class induk ke class anak, interface digunakan untuk membuat standar method,
-dan static digunakan agar method dapat dipanggil tanpa membuat objek. Dengan OOP, program menjadi lebih rapi,
-mudah dikembangkan, dan reusable.
+Polimorfisme adalah kemampuan satu method memiliki banyak bentuk.
+Abstraksi adalah proses menyembunyikan detail program dan hanya menampilkan fungsi penting.
+Inheritance adalah pewarisan dari class induk ke class anak.
+Interface adalah kontrak method yang harus diimplementasikan.
+Static digunakan agar method bisa dipanggil tanpa objek.
+Dengan konsep OOP, program menjadi lebih terstruktur, mudah dikembangkan, dan dapat digunakan kembali.
 </p>
 </div>
 
