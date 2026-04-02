@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tugas OOP Dart</title>
+<title>Polimorfisme dan Abstraksi</title>
 
 <style>
 body {font-family: Arial; background:#eef2f7; margin:0; padding:20px;}
@@ -53,7 +53,7 @@ function runDart(id, link){
 <div class="container">
 
 <div class="header">
-<h1>Tugas OOP Dart 1–14</h1>
+<h1>Polimorfisme dan Abstraksi</h1>
 <p>Nama: Yoza Ulpia Rafila</p>
 <p>NIM: 251410004</p>
 <p>Kelas: SI2A</p>
@@ -61,13 +61,9 @@ function runDart(id, link){
 
 <!-- 1 -->
 <div class="card">
-<h2>1. Class Hewan & Kucing (Polimorfisme Overriding)</h2>
+<h2>1. Polimorfisme (Method Overriding)</h2>
 <p><b>Pengertian:</b> Polimorfisme overriding adalah ketika class anak menimpa method dari class induk sehingga memiliki perilaku berbeda.</p>
 <pre>
-Nama: Yoza
-NIM: 251410004
-Kelas: SI2A
-
 class Hewan {
   void suara() {
     print("Hewan bersuara");
@@ -92,7 +88,7 @@ void main() {
 
 <!-- 2 -->
 <div class="card">
-<h2>2. Class Mahasiswa (Named Constructor)</h2>
+<h2>2. Named Constructor</h2>
 <p><b>Pengertian:</b> Named constructor adalah constructor yang memiliki nama sehingga satu class bisa memiliki lebih dari satu constructor.</p>
 <pre>
 class Mahasiswa {
@@ -118,7 +114,7 @@ void main() {
 
 <!-- 3 -->
 <div class="card">
-<h2>3. Class Kendaraan & Mobil (Abstraksi)</h2>
+<h2>3. Abstraksi (Abstract Class)</h2>
 <p><b>Pengertian:</b> Abstraksi adalah proses menyembunyikan detail implementasi dan hanya menampilkan fungsi utama.</p>
 <pre>
 abstract class Kendaraan {
@@ -142,7 +138,7 @@ void main() {
 
 <!-- 4 -->
 <div class="card">
-<h2>4. Class Bentuk & Lingkaran (Interface)</h2>
+<h2>4. Interface</h2>
 <p><b>Pengertian:</b> Interface adalah class yang harus diimplementasikan oleh class lain.</p>
 <pre>
 abstract class Bentuk {
@@ -166,7 +162,7 @@ void main() {
 
 <!-- 5 -->
 <div class="card">
-<h2>5. Class Hewan & Kucing (Inheritance)</h2>
+<h2>5. Inheritance</h2>
 <p><b>Pengertian:</b> Inheritance adalah pewarisan sifat dari class induk ke class anak.</p>
 <pre>
 class Hewan {
@@ -190,8 +186,8 @@ void main() {
 
 <!-- 6 -->
 <div class="card">
-<h2>6. Class Hitung (Overloading)</h2>
-<p><b>Pengertian:</b> Overloading adalah method dengan nama sama tetapi parameter berbeda.</p>
+<h2>6. Optional Parameter</h2>
+<p><b>Pengertian:</b> Optional parameter adalah parameter yang tidak wajib diisi saat pemanggilan method.</p>
 <pre>
 class Hitung {
   int tambah(int a, int b, [int c = 0]) {
@@ -211,7 +207,7 @@ void main() {
 
 <!-- 7 -->
 <div class="card">
-<h2>7. Class Mahasiswa (Encapsulation)</h2>
+<h2>7. Encapsulation (Getter & Setter)</h2>
 <p><b>Pengertian:</b> Encapsulation adalah menyembunyikan data menggunakan getter dan setter.</p>
 <pre>
 class Mahasiswa {
@@ -238,7 +234,7 @@ void main() {
 
 <!-- 8 -->
 <div class="card">
-<h2>8. Class Hewan & Sapi (Abstract Class)</h2>
+<h2>8. Abstract Class</h2>
 <p><b>Pengertian:</b> Abstract class adalah class yang tidak bisa dibuat objek langsung.</p>
 <pre>
 abstract class Hewan {
@@ -262,7 +258,7 @@ void main() {
 
 <!-- 9 -->
 <div class="card">
-<h2>9. Class Hewan & Ayam (Polimorfisme)</h2>
+<h2>9. Polimorfisme</h2>
 <p><b>Pengertian:</b> Polimorfisme adalah satu method memiliki banyak bentuk.</p>
 <pre>
 class Hewan {
@@ -288,7 +284,7 @@ void main() {
 
 <!-- 10 -->
 <div class="card">
-<h2>10. Class Matematika (Static)</h2>
+<h2>10. Static Method</h2>
 <p><b>Pengertian:</b> Static adalah method atau variabel yang bisa dipanggil tanpa membuat objek.</p>
 <pre>
 class Matematika {
@@ -307,8 +303,7 @@ void main() {
 
 <!-- 11 -->
 <div class="card">
-<h2>11. Class Mobil (Class dan Object)</h2>
-<p><b>Pengertian:</b> Class adalah blueprint, object adalah hasil dari class.</p>
+<h2>11. Class dan Object</h2>
 <pre>
 class Mobil {
   String merk = "Toyota";
@@ -325,8 +320,7 @@ void main() {
 
 <!-- 12 -->
 <div class="card">
-<h2>12. Class Mahasiswa (Constructor)</h2>
-<p><b>Pengertian:</b> Constructor adalah method yang dijalankan saat objek dibuat.</p>
+<h2>12. Constructor</h2>
 <pre>
 class Mahasiswa {
   String nama;
@@ -344,8 +338,7 @@ void main() {
 
 <!-- 13 -->
 <div class="card">
-<h2>13. Class Mahasiswa (This Keyword)</h2>
-<p><b>Pengertian:</b> This digunakan untuk menunjuk objek saat ini.</p>
+<h2>13. This Keyword</h2>
 <pre>
 class Mahasiswa {
   String nama;
@@ -366,8 +359,7 @@ void main() {
 
 <!-- 14 -->
 <div class="card">
-<h2>14. Class Persegi (Program Luas Persegi)</h2>
-<p><b>Pengertian:</b> Program OOP untuk menghitung luas persegi menggunakan class dan method.</p>
+<h2>14. Method Luas Persegi</h2>
 <pre>
 class Persegi {
   int sisi;
