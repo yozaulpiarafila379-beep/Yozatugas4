@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Polimorfisme dan Abstraksi Dart</title>
+<title>Polimorfisme dan Abstraksi</title>
 
 <style>
 body {
@@ -37,40 +37,14 @@ body {
     white-space: pre-wrap;
     margin-top:10px;
 }
-
-button {
-    background:#2f6fed;
-    color:white;
-    border:none;
-    padding:8px 15px;
-    border-radius:6px;
-    cursor:pointer;
-    margin-top:10px;
-}
-
-iframe {
-    width:100%;
-    height:400px;
-    border-radius:10px;
-    margin-top:10px;
-    display:none;
-}
 </style>
-
-<script>
-function runDart(id, link){
-    var frame = document.getElementById(id);
-    frame.style.display = "block";
-    frame.src = link + "&run=true";
-}
-</script>
 </head>
 
 <body>
 <div class="container">
 
 <div class="header">
-<h1>Polimorfisme dan Abstraksi Dart</h1>
+<h1>Polimorfisme dan Abstraksi</h1>
 <p>Nama: Yoza Ulpia Rafila</p>
 <p>NIM: 251410004</p>
 <p>Kelas: SI2A</p>
@@ -79,183 +53,298 @@ function runDart(id, link){
 <!-- 1 -->
 <div class="card">
 <h2>1. Class Hewan</h2>
-<p>Program ini menjelaskan konsep polimorfisme dimana method bersuara() memiliki banyak bentuk pada class Kucing, Anjing, dan Burung.</p>
+<p>Polimorfisme dimana method memiliki banyak bentuk.</p>
 <div class="code-box">
+/// ================================
+/// Nama  : Yoza Ulpia Rafila
+/// NIM   : 251410004
+/// Kelas : SI2A
+/// ================================
+
 abstract class Hewan {
+  String nama = "Hewan";
   void bersuara();
 }
 
 class Kucing extends Hewan {
-  void bersuara() => print("Meong");
+  Kucing() { nama = "Kucing"; }
+
+  @override
+  void bersuara() {
+    print('$nama: Meong');
+  }
 }
 
 class Anjing extends Hewan {
-  void bersuara() => print("Guk guk");
+  Anjing() { nama = "Anjing"; }
+
+  @override
+  void bersuara() {
+    print('$nama: Guk guk');
+  }
 }
 
-void main() {
-  List&lt;Hewan&gt; hewan = [Kucing(), Anjing()];
-  for (var h in hewan) {
-    h.bersuara();
+class Burung extends Hewan {
+  Burung() { nama = "Burung"; }
+
+  @override
+  void bersuara() {
+    print('$nama: Cuit cuit');
   }
 }
 </div>
-<button onclick="runDart('f1','https://dartpad.dev/embed-flutter.html?id=1')">Run Dart</button>
-<iframe id="f1"></iframe>
 </div>
 
 <!-- 2 -->
 <div class="card">
 <h2>2. Class Bentuk</h2>
-<p>Program ini menjelaskan method overriding dimana class turunan mengubah method dari class induk.</p>
+<p>Method overriding pada class turunan.</p>
 <div class="code-box">
+/// ================================
+/// Nama  : Yoza Ulpia Rafila
+/// NIM   : 251410004
+/// Kelas : SI2A
+/// ================================
+
 class Bentuk {
   void gambar() {
-    print("Menggambar bentuk");
+    print('Menggambar bentuk');
   }
 }
 
 class Lingkaran extends Bentuk {
-  void gambar() => print("Menggambar Lingkaran");
+  @override
+  void gambar() {
+    print('Menggambar lingkaran');
+  }
 }
 
 class Persegi extends Bentuk {
-  void gambar() => print("Menggambar Persegi");
+  @override
+  void gambar() {
+    print('Menggambar persegi');
+  }
 }
 </div>
-<button onclick="runDart('f2','https://dartpad.dev/embed-flutter.html?id=2')">Run Dart</button>
-<iframe id="f2"></iframe>
 </div>
 
 <!-- 3 -->
 <div class="card">
-<h2>3. Class Kendaraan (is & as)</h2>
-<p>Program ini menjelaskan penggunaan operator is dan as untuk mengecek tipe object.</p>
+<h2>3. Class Kendaraan</h2>
+<p>Penggunaan operator is dan as.</p>
 <div class="code-box">
+/// ================================
+/// Nama  : Yoza Ulpia Rafila
+/// NIM   : 251410004
+/// Kelas : SI2A
+/// ================================
+
 class Kendaraan {}
 
 class Mobil extends Kendaraan {
   void klakson() {
-    print("Tin!");
-  }
-}
-
-void main() {
-  Kendaraan k = Mobil();
-
-  if (k is Mobil) {
-    (k as Mobil).klakson();
+    print('Tin!');
   }
 }
 </div>
-<button onclick="runDart('f3','https://dartpad.dev/embed-flutter.html?id=3')">Run Dart</button>
-<iframe id="f3"></iframe>
 </div>
 
 <!-- 4 -->
 <div class="card">
-<h2>4. Abstract Class Kendaraan</h2>
-<p>Program ini menjelaskan abstraksi dimana class abstract memiliki method yang harus diimplementasikan oleh class turunan.</p>
+<h2>4. Abstract Kendaraan</h2>
+<p>Contoh abstraksi dalam OOP.</p>
 <div class="code-box">
+/// ================================
+/// Nama  : Yoza Ulpia Rafila
+/// NIM   : 251410004
+/// Kelas : SI2A
+/// ================================
+
 abstract class Kendaraan {
-  void start();
+  void jalan();
 }
 
 class Mobil extends Kendaraan {
-  void start() {
-    print("Mobil menyala");
+  void jalan() {
+    print("Mobil berjalan");
   }
 }
 </div>
-<button onclick="runDart('f4','https://dartpad.dev/embed-flutter.html?id=4')">Run Dart</button>
-<iframe id="f4"></iframe>
 </div>
 
 <!-- 5 -->
 <div class="card">
-<h2>5. Class Alat Musik</h2>
-<p>Program ini menjelaskan inheritance dimana class Gitar mewarisi class AlatMusik.</p>
+<h2>5. Alat Musik</h2>
+<p>Abstraksi dan inheritance.</p>
 <div class="code-box">
+/// ================================
+/// Nama  : Yoza Ulpia Rafila
+/// NIM   : 251410004
+/// Kelas : SI2A
+/// ================================
+
 abstract class AlatMusik {
+  String nama;
+  AlatMusik(this.nama);
+
   void mainkan();
 }
-
-class Gitar extends AlatMusik {
-  void mainkan() {
-    print("Jreng...");
-  }
-}
 </div>
-<button onclick="runDart('f5','https://dartpad.dev/embed-flutter.html?id=5')">Run Dart</button>
-<iframe id="f5"></iframe>
 </div>
 
 <!-- 6 -->
 <div class="card">
-<h2>6. Interface Pesawat</h2>
-<p>Program ini menjelaskan multiple interface.</p>
+<h2>6. Pesawat</h2>
+<p>Multiple interface.</p>
 <div class="code-box">
+/// ================================
+/// Nama  : Yoza Ulpia Rafila
+/// NIM   : 251410004
+/// Kelas : SI2A
+/// ================================
+
+abstract class Kendaraan {
+  void jalan();
+}
+
 abstract class Terbang {
   void terbang();
 }
-
-class Pesawat implements Terbang {
-  void terbang() {
-    print("Pesawat terbang");
-  }
-}
 </div>
-<button onclick="runDart('f6','https://dartpad.dev/embed-flutter.html?id=6')">Run Dart</button>
-<iframe id="f6"></iframe>
 </div>
 
 <!-- 7 -->
 <div class="card">
-<h2>7. Static MathUtils</h2>
-<p>Program ini menjelaskan static method.</p>
+<h2>7. MathUtils</h2>
+<p>Static method.</p>
 <div class="code-box">
+/// ================================
+/// Nama  : Yoza Ulpia Rafila
+/// NIM   : 251410004
+/// Kelas : SI2A
+/// ================================
+
 class MathUtils {
-  static int tambah(int a, int b) {
+  static double pi = 3.14;
+
+  static int add(int a, int b) {
     return a + b;
   }
 }
-
-void main() {
-  print(MathUtils.tambah(5, 3));
-}
 </div>
-<button onclick="runDart('f7','https://dartpad.dev/embed-flutter.html?id=7')">Run Dart</button>
-<iframe id="f7"></iframe>
 </div>
 
 <!-- 8 -->
 <div class="card">
-<h2>8. Metode Pembayaran</h2>
-<p>Program ini menjelaskan interface dan polimorfisme.</p>
+<h2>8. Pembayaran</h2>
+<p>Interface pembayaran.</p>
 <div class="code-box">
-abstract class Pembayaran {
-  void bayar();
-}
+/// ================================
+/// Nama  : Yoza Ulpia Rafila
+/// NIM   : 251410004
+/// Kelas : SI2A
+/// ================================
 
-class EWallet implements Pembayaran {
-  void bayar() => print("Bayar dengan E-Wallet");
+abstract class MetodePembayaran {
+  void bayar(double jumlah);
 }
 </div>
-<button onclick="runDart('f8','https://dartpad.dev/embed-flutter.html?id=8')">Run Dart</button>
-<iframe id="f8"></iframe>
 </div>
 
-<!-- 9-14 gunakan kode kamu sebelumnya -->
+<!-- 9 -->
+<div class="card">
+<h2>9. Bentuk Geometri</h2>
+<p>Menghitung luas dan keliling.</p>
+<div class="code-box">
+/// ================================
+/// Nama  : Yoza Ulpia Rafila
+/// NIM   : 251410004
+/// Kelas : SI2A
+/// ================================
 
+abstract class Bentuk {
+  double hitungLuas();
+  double hitungKeliling();
+}
+</div>
+</div>
+
+<!-- 10 -->
+<div class="card">
+<h2>10. Programmer</h2>
+<p>Inheritance dari pekerja.</p>
+<div class="code-box">
+/// ================================
+/// Nama  : yoza
+/// NIM   : 251410004
+/// Kelas : SI2A
+/// ================================
+
+abstract class Pekerja {
+  String nama;
+  Pekerja(this.nama);
+  void bekerja();
+}
+</div>
+</div>
+
+<!-- 11 -->
+<div class="card">
+<h2>11. Multi Pekerja</h2>
+<p>Polimorfisme banyak class.</p>
+<div class="code-box">
+/// ================================
+/// Nama  : yoza
+/// NIM   : 251410004
+/// Kelas : SI2A
+/// ================================
+</div>
+</div>
+
+<!-- 12 -->
+<div class="card">
+<h2>12. Polimorfisme List</h2>
+<p>List berisi banyak object.</p>
+<div class="code-box">
+/// ================================
+/// Nama  : yoza
+/// NIM   : 251410004
+/// Kelas : SI2A
+/// ================================
+</div>
+</div>
+
+<!-- 13 -->
+<div class="card">
+<h2>13. Tablet</h2>
+<p>Multiple interface.</p>
+<div class="code-box">
+/// ================================
+/// Nama  : yoza
+/// NIM   : 251410004
+/// Kelas : SI2A
+/// ================================
+</div>
+</div>
+
+<!-- 14 -->
+<div class="card">
+<h2>14. MathUtils Advanced</h2>
+<p>Utility matematika.</p>
+<div class="code-box">
+/// ================================
+/// Nama  : yoza
+/// NIM   : 251410004
+/// Kelas : SI2A
+/// ================================
+</div>
+</div>
+
+<!-- Kesimpulan -->
 <div class="card">
 <h2>Kesimpulan</h2>
 <p>
-Polimorfisme adalah kemampuan method memiliki banyak bentuk.
-Abstraksi adalah proses menyembunyikan detail implementasi.
-Inheritance adalah pewarisan dari class induk ke class anak.
-Interface digunakan untuk membuat standar method.
-Static digunakan agar method dapat dipanggil tanpa objek.
-Dengan OOP program menjadi lebih rapi dan mudah dikembangkan.
+OOP membantu membuat program lebih terstruktur dengan konsep abstraksi, polimorfisme, inheritance, dan interface.
 </p>
 </div>
 
