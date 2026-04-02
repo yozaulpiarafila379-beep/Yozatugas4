@@ -459,6 +459,467 @@ pesawat.terbang();
 </div>  
 <button class="button" onclick="runDart('f6','https://dartpad.dev/embed-flutter.html?id=3b8dc0f6aea58918e73caa74605041d2')">Run Dart</button>  
 <iframe id="f6"></iframe>  
+</div>  <!DOCTYPE html>  <html lang="id">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Polimorfisme dan Abstraksi dalam Dart</title>  <style>  
+body {  
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+    background:#f4f7f6;  
+    margin:0;  
+    padding:20px;  
+    color:#333;  
+    line-height:1.6;  
+}  
+.container {  
+    max-width:900px;  
+    margin:auto;  
+    background:white;  
+    padding:30px;  
+    border-radius:12px;  
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);  
+}  
+  
+.header {  
+    border-left:6px solid #2f6fed;  
+    padding-left:15px;  
+    margin-bottom:30px;  
+}  
+  
+h1 {  
+    color:#2f6fed;  
+    font-size:2.5em;  
+    margin-bottom:10px;  
+}  
+h2 {  
+    color:#4a4a4a;  
+    font-size:1.8em;  
+    border-bottom:2px solid #eee;  
+    padding-bottom:10px;  
+    margin-top:30px;  
+    margin-bottom:15px;  
+}  
+h3 {  
+    color:#5a5a5a;  
+    font-size:1.4em;  
+    margin-top:25px;  
+    margin-bottom:10px;  
+}  
+  
+p {  
+    margin-bottom:1em;  
+}  
+  
+.code-box {  
+    background:#2d2d2d; /* Darcula theme for code */  
+    color:#f8f8f2;  
+    padding:20px;  
+    border-radius:8px;  
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;  
+    white-space: pre-wrap;  
+    word-wrap: break-word; /* Ensure long lines wrap */  
+    margin-top:15px;  
+    margin-bottom:20px;  
+    overflow-x: auto; /* Enable horizontal scrolling for wide code */  
+    font-size:0.95em;  
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);  
+}  
+  
+.button {  
+    background:#2f6fed;  
+    color:white;  
+    border:none;  
+    padding:10px 20px;  
+    border-radius:6px;  
+    cursor:pointer;  
+    margin-top:10px;  
+    font-size:1em;  
+    transition: background-color 0.3s ease;  
+}  
+.button:hover {  
+    background:#1c5adb;  
+}  
+  
+iframe {  
+    width:100%;  
+    height:400px;  
+    border-radius:8px;  
+    margin-top:15px;  
+    border:1px solid #ddd;  
+    display:none; /* Hidden by default */  
+}  
+  
+.section {  
+    margin-bottom:40px;  
+    padding-bottom:20px;  
+    border-bottom:1px dashed #e0e0e0;  
+}  
+.section:last-of-type {  
+    border-bottom:none;  
+    margin-bottom:0;  
+}  
+  
+.note {  
+    background:#e6f7ff;  
+    border-left:4px solid #1890ff;  
+    padding:10px 15px;  
+    margin:15px 0;  
+    border-radius:4px;  
+    color:#0050b3;  
+}  
+  
+.summary-box {  
+    background:#f0f8ff;  
+    border-left:5px solid #2f6fed;  
+    padding:20px;  
+    border-radius:8px;  
+    margin-top:30px;  
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);  
+}  
+.summary-box h2 {  
+    color:#2f6fed;  
+    border-bottom:none;  
+    padding-bottom:0;  
+    margin-top:0;  
+}  
+.summary-box ul {  
+    list-style-type: disc;  
+    margin-left:20px;  
+}  
+.summary-box li {  
+    margin-bottom:0.5em;  
+}  
+  
+</style>  <script>  
+function runDart(id, link){  
+    var frame = document.getElementById(id);  
+    // Toggle visibility  
+    if (frame.style.display === "block") {  
+        frame.style.display = "none";  
+        frame.src = ""; // Clear src to stop execution  
+    } else {  
+        frame.style.display = "block";  
+        frame.src = link + "&run=true";  
+    }  
+}  
+</script>  </head>  <body>  
+<div class="container">  <div class="header">  
+<h1>Polimorfisme dan Abstraksi dalam Dart</h1>  
+<p><strong>Nama:</strong> Yoza Ulpia Rafila</p>  
+<p><strong>NIM:</strong> 251410004</p>  
+<p><strong>Kelas:</strong> SI2A</p>  
+</div>  <!-- 1 -->  <div class="section">  
+<h2>1. Class Hewan (Polimorfisme)</h2>  
+<p>Kode ini mendemonstrasikan polimorfisme dan abstraksi. Kelas abstrak Hewan memiliki metode bersuara() yang belum diimplementasikan. Subkelas seperti Kucing, Anjing, dan Burung kemudian menyediakan implementasi unik untuk bersuara(), menunjukkan perilaku yang berbeda dari metode yang sama.</p>  
+<h3>Kode Dart:</h3>  
+<div class="code-box">  
+<pre><code>  
+// ================================  
+// Nama : Yoza Ulpia Rafila  
+// NIM        : 251410004  
+// Kelas : SI2A  
+// ================================  abstract class Hewan {
+String nama = "Hewan";
+
+void bersuara();
+}
+
+class Kucing extends Hewan {
+Kucing() {
+nama = "Kucing";
+}
+
+@override
+void bersuara() {
+print('$nama: Meong');
+}
+}
+
+class Anjing extends Hewan {
+Anjing() {
+nama = "Anjing";
+}
+
+@override
+void bersuara() {
+print('$nama: Guk guk');
+}
+}
+
+class Burung extends Hewan {
+Burung() {
+nama = "Burung";
+}
+
+@override
+void bersuara() {
+print('$nama: Cuit cuit');
+}
+}
+
+void main() {
+print("=== Tugas Polimorfisme &     Abstraksi ===");
+
+List<Hewan> daftarHewan = [
+Kucing(),
+Anjing(),
+Burung()
+];
+
+for (var h in daftarHewan) {
+h.bersuara();
+}
+}
+</code></pre>
+
+</div>  
+<button class="button" onclick="runDart('f1','https://dartpad.dev/embed-flutter.html?id=569d91a7d55a7348d68fff15153e81f8')">Run Dart</button>  
+<iframe id="f1"></iframe>  
+</div>  <!-- 2 -->  <div class="section">  
+<h2>2. Class Bentuk (Polimorfisme)</h2>  
+<p>Ini adalah contoh polimorfisme melalui method overriding. Kelas Bentuk memiliki metode gambar() default. Lingkaran dan Persegi menimpa (override) metode ini untuk menampilkan pesan penggambaran yang spesifik untuk bentuk mereka masing-masing.</p>  
+<h3>Kode Dart:</h3>  
+<div class="code-box">  
+<pre><code>  
+// ================================  
+// Nama : Yoza Ulpia Rafila  
+// NIM        : 251410004  
+// Kelas : SI2A  
+// ================================  class Bentuk {
+void gambar() {
+print('Menggambar bentuk');
+}
+}
+
+class Lingkaran extends Bentuk {
+@override
+void gambar() {
+print('Menggambar lingkaran');
+}
+}
+
+class Persegi extends Bentuk {
+@override
+void gambar() {
+print('Menggambar persegi');
+}
+}
+
+void main() {
+print("=== Polimorfisme Bentuk ===");
+
+// Menggunakan List (lebih baik &     rapi)
+List<Bentuk> daftarBentuk = [
+Lingkaran(),
+Persegi()
+];
+
+for (var bentuk in daftarBentuk) {
+bentuk.gambar();
+}
+}
+</code></pre>
+
+</div>  
+<button class="button" onclick="runDart('f2','https://dartpad.dev/embed-flutter.html?id=51f1e01964dbc6a42f15ae6de6d01cd7')">Run Dart</button>  
+<iframe id="f2"></iframe>  
+</div>  <!-- 3 -->  <div class="section">  
+<h2>3. Class Kendaraan (Operator `is` & `as`)</h2>  
+<p>Kode ini menunjukkan cara menggunakan operator is untuk memeriksa tipe objek pada saat runtime dan operator as untuk melakukan type casting atau perubahan tipe data. Penggunaan as? untuk safe casting mencegah error jika tipe tidak cocok.</p>  
+<h3>Kode Dart:</h3>  
+<div class="code-box">  
+<pre><code>  
+/// ================================  
+/// Nama : Yoza Ulpia Rafila  
+/// NIM        : 251410004  
+/// Kelas : SI2A  
+/// ================================  class Kendaraan {}
+
+class Mobil extends Kendaraan {
+void klakson() {
+print('Tin!');
+}
+}
+
+void main() {
+print("=== Operator is dan as ===");
+print("Nama : Yoza Ulpia Rafila");
+print("NIM        : 251410004");
+print("Kelas : SI2A");
+print("--------------------------");
+
+Kendaraan k = Mobil();
+
+// Mengecek tipe dengan "is"
+if (k is Mobil) {
+print("Cek tipe: k adalah Mobil");
+k.klakson();
+}
+
+// Safe casting dengan "as?"
+print("Safe casting:");
+(k as Mobil?)?.klakson();
+}
+</code></pre>
+
+</div>  
+<button class="button" onclick="runDart('f3','https://dartpad.dev/embed-flutter.html?id=985fc039a838958b54b59daced97342b')">Run Dart</button>  
+<iframe id="f3"></iframe>  
+</div>  <!-- 4 -->  <div class="section">  
+<h2>4. Abstract Class Kendaraan</h2>  
+<p>Contoh abstraksi. Kelas Kendaraan dideklarasikan sebagai abstrak dan memiliki metode abstrak start(), yang berarti kelas ini tidak bisa diinstansiasi langsung dan start() harus diimplementasikan oleh kelas turunan (contohnya Mobil). Metode stop() adalah konkret dan memiliki implementasi langsung.</p>  
+<h3>Kode Dart:</h3>  
+<div class="code-box">  
+<pre><code>  
+/// ================================  
+/// Nama : Yoza Ulpia Rafila  
+/// NIM        : 251410004  
+/// Kelas : SI2A  
+/// ================================  abstract class Kendaraan {
+String merk;
+
+// Constructor
+Kendaraan(this.merk);
+
+// Method abstract
+void start();
+
+// Method concrete
+void stop() {
+print('Kendaraan berhenti');
+}
+}
+
+class Mobil extends Kendaraan {
+// Constructor turunan
+Mobil(String merk) : super(merk);
+
+@override
+void start() {
+print('Mobil $merk menyala');
+}
+}
+
+void main() {
+print("=== Abstract Class Kendaraan ===");
+print("Nama : Yoza Ulpia Rafila");
+print("NIM        : 251410004");
+print("Kelas : SI2A");
+print("--------------------------------");
+
+Mobil mobil = Mobil("Toyota");
+
+mobil.start();
+mobil.stop();
+}
+</code></pre>
+
+</div>  
+<button class="button" onclick="runDart('f4','https://dartpad.dev/embed-flutter.html?id=f9e85ea1387eae713f9048757cd5c97d')">Run Dart</button>  
+<iframe id="f4"></iframe>  
+</div>  <!-- 5 -->  <div class="section">  
+<h2>5. Class AlatMusik (Abstraksi)</h2>  
+<p>Kode ini mendemonstrasikan kelas abstrak AlatMusik dengan metode mainkan() yang abstrak (harus diimplementasikan) dan metode info() yang konkret (sudah memiliki implementasi). Kelas Gitar mewarisi dari AlatMusik dan mengimplementasikan mainkan() secara spesifik.</p>  
+<h3>Kode Dart:</h3>  
+<div class="code-box">  
+<pre><code>  
+/// ================================  
+/// Nama : Yoza Ulpia Rafila  
+/// NIM        : 251410004  
+/// Kelas : SI2A  
+/// ================================  abstract class AlatMusik {
+String nama;
+
+// Constructor
+AlatMusik(this.nama);
+
+// Method abstract
+void mainkan();
+
+// Method concrete
+void info() {
+print('Ini adalah alat musik $nama');
+}
+}
+
+class Gitar extends AlatMusik {
+// Constructor turunan
+Gitar(String nama) : super(nama);
+
+@override
+void mainkan() {
+print('Gitar $nama berbunyi: Jreng jreng...');
+}
+}
+
+void main() {
+print("=== Abstract Class Alat Musik ===");
+print("Nama : Yoza Ulpia Rafila");
+print("NIM        : 251410004");
+print("Kelas : SI2A");
+print("--------------------------------");
+
+Gitar gitar = Gitar("Akustik");
+
+gitar.info();
+gitar.mainkan();
+}
+</code></pre>
+
+</div>  
+<button class="button" onclick="runDart('f5','https://dartpad.dev/embed-flutter.html?id=4cbcd9a48cdf3ba3299256cd07e38fd4')">Run Dart</button>  
+<iframe id="f5"></iframe>  
+</div>  <!-- 6 -->  <div class="section">  
+<h2>6. Class Pesawat (Interface)</h2>  
+<p>Menunjukkan konsep interface dalam Dart. Kelas Pesawat mengimplementasikan Kendaraan dan Terbang (yang keduanya adalah kelas abstrak yang bertindak sebagai interface). Ini berarti Pesawat harus menyediakan implementasi untuk semua metode yang didefinisikan dalam kedua "interface" tersebut.</p>  
+<h3>Kode Dart:</h3>  
+<div class="code-box">  
+<pre><code>  
+/// ================================  
+/// Nama : Yoza Ulpia Rafila  
+/// NIM        : 251410004  
+/// Kelas : SI2A  
+/// ================================  // Abstract Class
+abstract class Kendaraan {
+void jalan();
+}
+
+// Interface
+abstract class Terbang {
+void terbang();
+}
+
+// Class Pesawat
+class Pesawat extends Kendaraan implements Terbang {
+@override
+void jalan() {
+print('Pesawat berjalan di landasan');
+}
+
+@override
+void terbang() {
+print('Pesawat terbang di udara');
+}
+}
+
+void main() {
+print("=== OOP Dart ===");
+print("Nama : Yoza Ulpia Rafila");
+print("NIM        : 251410004");
+print("Kelas : SI2A");
+print("--------------------");
+
+Pesawat pesawat = Pesawat();
+
+pesawat.jalan();
+pesawat.terbang();
+}
+</code></pre>
+
+</div>  
+<button class="button" onclick="runDart('f6','https://dartpad.dev/embed-flutter.html?id=3b8dc0f6aea58918e73caa74605041d2')">Run Dart</button>  
+<iframe id="f6"></iframe>  
 </div>  <!-- 7 -->  <div class="section">  
 <h2>7. Class MathUtils (Static)</h2>  
 <p>Ini adalah contoh penggunaan static member. MathUtils berisi variabel statis (pi) dan metode statis (add). Anggota statis ini dapat diakses langsung melalui nama kelas (MathUtils.pi, MathUtils.add) tanpa perlu membuat objek MathUtils.</p>  
@@ -731,4 +1192,4 @@ p.bekerja();
 <iframe id="f12"></iframe>  
 </div>  </div>  
 </body>  
-</html>  
+</html>
