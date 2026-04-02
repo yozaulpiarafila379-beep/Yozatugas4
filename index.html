@@ -676,260 +676,337 @@ lingkaran.info();
 
 <!-- 10 -->
 <div class="section">
-<h2>10. Class Programmer</h2>
-<p>Ini menunjukkan konsep dasar pewarisan dan abstraksi. Kelas Pekerja adalah abstrak dengan metode bekerja() yang abstrak. Kelas Programmer mewarisi dan menyediakan implementasinya.</p>
+<h2>10. Class Pekerja (Bonus 1)</h2>
+<p>Contoh abstract class dengan constructor dan method info serta bekerja.</p>
 <h3>Kode Dart:</h3>
 <div class="code-box">
 <pre><code>
 /// ================================
-/// Nama : Yoza Ulpia Rafila
+/// Nama : yoza
 /// NIM        : 251410004
 /// Kelas : SI2A
 /// ================================
+/// Bonus 1
 
-abstract class Pekerja {
-void bekerja();
+abstractclassPekerja{
+Stringnama;
+
+Pekerja(this.nama);
+
+voidbekerja();
+
+voidinfo() {
+print("Nama:$nama");
+}
 }
 
-class Programmer extends Pekerja {
+classProgrammerextendsPekerja{
+Programmer(Stringnama):super(nama);
+
 @override
-void bekerja() {
-print('Programmer sedang menulis kode...');
+voidbekerja() {
+print("$namabekerja sebagai Programmer");
 }
 }
 
-void main() {
-print("=== Class Programmer ===");
-print("Nama : Yoza Ulpia Rafila");
-print("NIM        : 251410004");
-print("Kelas : SI2A");
-print("--------------------------");
-
-Programmer p = Programmer();
+voidmain() {
+Programmerp=Programmer("Andi");
+p.info();
 p.bekerja();
 }
+
+/*
+Hasil Output:
+Nama: Andi
+Andi bekerja sebagai Programmer
+*/
 </code></pre>
 </div>
-<button class="button" onclick="runDart('f10','https://dartpad.dev/embed-flutter.html?id=3c0d98f4423954c616b846a6e244a9d2')">Run Dart</button>
+<button class="button" onclick="runDart('f10','https://dartpad.dev/192859027ed0a9a63a7bcb9ffce7bbd4')">Run Dart</button>
 <iframe id="f10"></iframe>
 </div>
 
 <!-- 11 -->
 <div class="section">
-<h2>11. Multi Class Pekerja</h2>
-<p>Berbagai subkelas seperti Programmer, Dokter, dan Guru mewarisi dari kelas abstrak Pekerja dan masing-masing memberikan implementasi bekerja() yang berbeda.</p>
+<h2>11. Multi Class Pekerja (Bonus 2)</h2>
+<p>Membuat beberapa class turunan Pekerja dengan perilaku berbeda.</p>
 <h3>Kode Dart:</h3>
 <div class="code-box">
 <pre><code>
 /// ================================
-/// Nama : Yoza Ulpia Rafila
+/// Nama : yoza
 /// NIM        : 251410004
 /// Kelas : SI2A
 /// ================================
+/// Bonus 2
 
-abstract class Pekerja {
-String nama;
+abstractclassPekerja{
+Stringnama;
 Pekerja(this.nama);
-void bekerja();
+
+voidbekerja();
 }
 
-class Programmer extends Pekerja {
-Programmer(String nama) : super(nama);
-@override void bekerja() { print('$nama: Sedang coding'); }
+classProgrammerextendsPekerja{
+Programmer(Stringnama):super(nama);
+
+@override
+voidbekerja() {
+print("$namaadalah Programmer");
+}
 }
 
-class Dokter extends Pekerja {
-Dokter(String nama) : super(nama);
-@override void bekerja() { print('$nama: Sedang mengobati'); }
+classDokterextendsPekerja{
+Dokter(Stringnama):super(nama);
+
+@override
+voidbekerja() {
+print("$namaadalah Dokter");
+}
 }
 
-class Guru extends Pekerja {
-Guru(String nama) : super(nama);
-@override void bekerja() { print('$nama: Sedang mengajar'); }
+classGuruextendsPekerja{
+Guru(Stringnama):super(nama);
+
+@override
+voidbekerja() {
+print("$namaadalah Guru");
+}
 }
 
-void main() {
-print("=== Berbagai Profesi ===");
-print("Nama : Yoza Ulpia Rafila");
-print("NIM        : 251410004");
-print("Kelas : SI2A");
-print("--------------------------");
+voidmain() {
+Programmerp=Programmer("Andi");
+Dokterd=Dokter("Budi");
+Gurug=Guru("Citra");
 
-var p1 = Programmer("Andi");
-var p2 = Dokter("Budi");
-var p3 = Guru("Cici");
-
-p1.bekerja();
-p2.bekerja();
-p3.bekerja();
+p.bekerja();
+d.bekerja();
+g.bekerja();
 }
+
+/*
+Hasil Output:
+Andi adalah Programmer
+Budi adalah Dokter
+Citra adalah Guru
+*/
 </code></pre>
 </div>
-<button class="button" onclick="runDart('f11','https://dartpad.dev/embed-flutter.html?id=1d346ba1594eeb7437e3492f50ce60e0')">Run Dart</button>
+<button class="button" onclick="runDart('f11','https://dartpad.dev/3c0d98f4423954c616b846a6e244a9d2')">Run Dart</button>
 <iframe id="f11"></iframe>
 </div>
 
 <!-- 12 -->
 <div class="section">
-<h2>12. Polimorfisme List</h2>
-<p>Demonstrasi polimorfisme. Objek dari berbagai subkelas disimpan dalam satu list bertipe kelas induk. Saat metode dipanggil, setiap objek menjalankan implementasinya sendiri.</p>
+<h2>12. Polimorfisme List (Bonus 3)</h2>
+<p>Menyimpan berbagai objek ke dalam satu list dan memanggil method secara serentak.</p>
 <h3>Kode Dart:</h3>
 <div class="code-box">
 <pre><code>
 /// ================================
-/// Nama : Yoza Ulpia Rafila
+/// Nama : yoza
 /// NIM        : 251410004
 /// Kelas : SI2A
 /// ================================
+/// Bonus 3
 
-abstract class Pekerja {
-void bekerja();
+abstractclassPekerja{
+Stringnama;
+Pekerja(this.nama);
+
+voidbekerja();
 }
 
-class Programmer extends Pekerja {
-@override void bekerja() { print('Coding...'); }
+classProgrammerextendsPekerja{
+Programmer(Stringnama):super(nama);
+
+@override
+voidbekerja() {
+print("$namasedang coding");
+}
 }
 
-class Dokter extends Pekerja {
-@override void bekerja() { print('Mengobati...'); }
+classDokterextendsPekerja{
+Dokter(Stringnama):super(nama);
+
+@override
+voidbekerja() {
+print("$namasedang mengobati pasien");
+}
 }
 
-class Guru extends Pekerja {
-@override void bekerja() { print('Mengajar...'); }
+classGuruextendsPekerja{
+Guru(Stringnama):super(nama);
+
+@override
+voidbekerja() {
+print("$namasedang mengajar");
+}
 }
 
-void main() {
-print("=== Polimorfisme List ===");
-print("Nama : Yoza Ulpia Rafila");
-print("NIM        : 251410004");
-print("Kelas : SI2A");
-print("--------------------------");
-
-List<Pekerja> semuaPekerja = [
-Programmer(),
-Dokter(),
-Guru()
+voidmain() {
+List<Pekerja>daftar=[
+Programmer("Andi"),
+Dokter("Budi"),
+Guru("Citra"),
 ];
 
-for (var p in semuaPekerja) {
-p.bekerja();
+for(varpindaftar) {
+p.bekerja();// polymorphism
 }
 }
+
+/*
+Hasil Output:
+Andi sedang coding
+Budi sedang mengobati pasien
+Citra sedang mengajar
+*/
 </code></pre>
 </div>
-<button class="button" onclick="runDart('f12','https://dartpad.dev/embed-flutter.html?id=5e1bf40dc32c12ec326f796f912dbbd1')">Run Dart</button>
+<button class="button" onclick="runDart('f12','https://dartpad.dev/1d346ba1594eeb7437e3492f50ce60e0')">Run Dart</button>
 <iframe id="f12"></iframe>
 </div>
 
 <!-- 13 -->
 <div class="section">
-<h2>13. Class Bangun Ruang</h2>
-<p>Contoh abstraksi dan polimorfisme untuk bangun ruang. Kelas abstrak BangunRuang mendefinisikan metode hitungVolume() dan hitungLuasPermukaan() yang diimplementasikan oleh kelas Kubus dan Balok.</p>
+<h2>13. Multiple Interface (Bonus 4)</h2>
+<p>Satu class mengimplementasikan banyak abstract class sekaligus.</p>
 <h3>Kode Dart:</h3>
 <div class="code-box">
 <pre><code>
 /// ================================
-/// Nama : Yoza Ulpia Rafila
+/// Nama : yoza
 /// NIM        : 251410004
 /// Kelas : SI2A
 /// ================================
+/// Bonus 4
 
-abstract class BangunRuang {
-double hitungVolume();
-double hitungLuasPermukaan();
+abstractclassKomputer{
+voidmenjalankanProgram();
 }
 
-class Kubus extends BangunRuang {
-double sisi;
-Kubus(this.sisi);
+abstractclassKamera{
+voidambilFoto();
+}
 
+abstractclassTelepon{
+voidmenelepon();
+}
+
+classTabletimplementsKomputer,Kamera,Telepon{
 @override
-double hitungVolume() {
-return sisi * sisi * sisi;
-}
-
-@override
-double hitungLuasPermukaan() {
-return 6 * sisi * sisi;
-}
-}
-
-class Balok extends BangunRuang {
-double panjang, lebar, tinggi;
-Balok(this.panjang, this.lebar, this.tinggi);
-
-@override
-double hitungVolume() {
-return panjang * lebar * tinggi;
+voidmenjalankanProgram() {
+print("Tablet menjalankan program");
 }
 
 @override
-double hitungLuasPermukaan() {
-return 2 * ((panjang*lebar) + (panjang*tinggi) + (lebar*tinggi));
+voidambilFoto() {
+print("Tablet mengambil foto");
+}
+
+@override
+voidmenelepon() {
+print("Tablet menelepon");
 }
 }
 
-void main() {
-print("=== Hitung Bangun Ruang ===");
-print("Nama : Yoza Ulpia Rafila");
-print("NIM        : 251410004");
-print("Kelas : SI2A");
-print("--------------------------");
-
-var kubus = Kubus(5);
-print('Volume Kubus : ${kubus.hitungVolume()}');
-print('Luas Permukaan : ${kubus.hitungLuasPermukaan()}');
+voidmain() {
+Tablettablet=Tablet();
+tablet.menjalankanProgram();
+tablet.ambilFoto();
+tablet.menelepon();
 }
+
+/*
+Hasil Output:
+Tablet menjalankan program
+Tablet mengambil foto
+Tablet menelepon
+*/
 </code></pre>
 </div>
-<button class="button" onclick="runDart('f13','https://dartpad.dev/embed-flutter.html?id=...')">Run Dart</button>
+<button class="button" onclick="runDart('f13','https://dartpad.dev/5e1bf40dc32c12ec326f796f912dbbd1')">Run Dart</button>
 <iframe id="f13"></iframe>
 </div>
 
 <!-- 14 -->
 <div class="section">
-<h2>14. Class Aritmatika</h2>
-<p>Contoh penggunaan method overloading sederhana dan enkapsulasi. Kelas Aritmatika memiliki metode tambah() yang bisa menerima dua atau tiga parameter, menunjukkan fleksibilitas dalam pemrograman berorientasi objek.</p>
+<h2>14. Utility Math (Bonus 5)</h2>
+<p>Kumpulan fungsi matematika statis seperti faktorial, prima, rata-rata, dan median.</p>
 <h3>Kode Dart:</h3>
 <div class="code-box">
 <pre><code>
 /// ================================
-/// Nama : Yoza Ulpia Rafila
+/// Nama : yoza
 /// NIM        : 251410004
 /// Kelas : SI2A
 /// ================================
+/// Bonus 5
 
-class Aritmatika {
-// Method dengan 2 parameter
-int tambah(int a, int b) {
-return a + b;
+import'dart:math';
+
+classMathUtils{
+staticintfaktorial(intn) {
+if(n<=1)return1;
+returnn*faktorial(n-1);
 }
 
-// Method dengan 3 parameter (overloading)
-int tambahTiga(int a, int b, int c) {
-return a + b + c;
+staticboolcekPrima(intn) {
+if(n<=1)returnfalse;
+for(inti=2;i<=sqrt(n);i++) {
+if(n%i==0)returnfalse;
+}
+returntrue;
 }
 
-int kali(int a, int b) {
-return a * b;
+staticdoublepembulatan(doubleangka,intdesimal) {
+doublescale=pow(10,desimal).toDouble();
+return(angka*scale).round()/scale;
+}
+
+staticintrandomInt(intmin,intmax) {
+returnmin+Random().nextInt(max-min+1);
+}
+
+staticdoublerataRata(List<int>list) {
+inttotal=list.reduce((a,b)=>a+b);
+returntotal/list.length;
+}
+
+staticdoublemedian(List<int>list) {
+list.sort();
+intn=list.length;
+
+if(n%2==0) {
+return(list[n~/2-1]+list[n~/2])/2;
+}else{
+returnlist[n~/2].toDouble();
+}
 }
 }
 
-void main() {
-print("=== Class Aritmatika ===");
-print("Nama : Yoza Ulpia Rafila");
-print("NIM        : 251410004");
-print("Kelas : SI2A");
-print("--------------------------");
-
-var hitung = Aritmatika();
-print('10 + 5 = ${hitung.tambah(10, 5)}');
-print('10 + 5 + 3 = ${hitung.tambahTiga(10, 5, 3)}');
-print('10 x 5 = ${hitung.kali(10, 5)}');
+voidmain() {
+print("Faktorial 5 =${MathUtils.faktorial(5)}");
+print("Prima 7 =${MathUtils.cekPrima(7)}");
+print("Pembulatan =${MathUtils.pembulatan(3.14159,2)}");
+print("Random =${MathUtils.randomInt(1,10)}");
+print("Rata-rata =${MathUtils.rataRata([10,20,30,40,50])}");
+print("Median =${MathUtils.median([10,20,30,40,50])}");
 }
+
+/*
+Hasil Output:
+Faktorial 5 = 120
+Prima 7 = true
+Pembulatan = 3.14
+Random = (angka acak 1-10)
+Rata-rata = 30
+Median = 30
+*/
 </code></pre>
 </div>
-<button class="button" onclick="runDart('f14','https://dartpad.dev/embed-flutter.html?id=...')">Run Dart</button>
+<button class="button" onclick="runDart('f14','https://dartpad.dev/0011f7b4b5bfed2a0ab49e4c9e12229d')">Run Dart</button>
 <iframe id="f14"></iframe>
 </div>
-
+  
