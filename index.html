@@ -28,6 +28,13 @@ body {
     margin-bottom:25px;
 }
 
+.card img {
+    width:120px;
+    display:block;
+    margin:auto;
+    margin-bottom:10px;
+}
+
 .code-box {
     background:#0f2f1f;
     color:#f5d67b;
@@ -78,34 +85,25 @@ function runDart(id, link){
 
 <!-- 1 -->
 <div class="card">
-<h2>1. Class Hewan (Polimorfisme)</h2>
-<p>Polimorfisme dimana setiap turunan menghasilkan suara berbeda.</p>
+<img src="https://cdn-icons-png.flaticon.com/512/616/616430.png">
+<h2>1. Class Hewan</h2>
+<p>Polimorfisme: objek berbeda menghasilkan suara berbeda.</p>
 <div class="code-box">
 abstract class Hewan {
-  String nama = "Hewan";
-  void bersuara();
+  void suara();
 }
 
 class Kucing extends Hewan {
-  Kucing() { nama = "Kucing"; }
-  void bersuara() { print('$nama: Meong'); }
+  void suara() => print("Meong");
 }
 
 class Anjing extends Hewan {
-  Anjing() { nama = "Anjing"; }
-  void bersuara() { print('$nama: Guk guk'); }
-}
-
-class Burung extends Hewan {
-  Burung() { nama = "Burung"; }
-  void bersuara() { print('$nama: Cuit cuit'); }
+  void suara() => print("Guk guk");
 }
 
 void main() {
-  List<Hewan> daftar = [Kucing(), Anjing(), Burung()];
-  for (var h in daftar) {
-    h.bersuara();
-  }
+  List<Hewan> list = [Kucing(), Anjing()];
+  list.forEach((h) => h.suara());
 }
 </div>
 <button onclick="runDart('f1','https://dartpad.dev/embed-flutter.html?id=569d91a7d55a7348d68fff15153e81f8')">Run Dart</button>
@@ -114,32 +112,20 @@ void main() {
 
 <!-- 2 -->
 <div class="card">
-<h2>2. Class Bentuk (Polimorfisme)</h2>
+<img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+<h2>2. Class Bentuk</h2>
 <p>Polimorfisme method gambar().</p>
 <div class="code-box">
 class Bentuk {
-  void gambar() {
-    print('Menggambar bentuk');
-  }
+  void gambar() => print("Bentuk");
 }
 
 class Lingkaran extends Bentuk {
-  void gambar() {
-    print('Menggambar lingkaran');
-  }
+  void gambar() => print("Lingkaran");
 }
 
 class Persegi extends Bentuk {
-  void gambar() {
-    print('Menggambar persegi');
-  }
-}
-
-void main() {
-  List<Bentuk> daftar = [Lingkaran(), Persegi()];
-  for (var b in daftar) {
-    b.gambar();
-  }
+  void gambar() => print("Persegi");
 }
 </div>
 <button onclick="runDart('f2','https://dartpad.dev/embed-flutter.html?id=51f1e01964dbc6a42f15ae6de6d01cd7')">Run Dart</button>
@@ -148,25 +134,14 @@ void main() {
 
 <!-- 3 -->
 <div class="card">
-<h2>3. Class Kendaraan (Operator is & as)</h2>
-<p>Mengecek tipe objek dan casting.</p>
+<img src="https://cdn-icons-png.flaticon.com/512/743/743131.png">
+<h2>3. Class Kendaraan</h2>
+<p>Operator is & as untuk pengecekan tipe.</p>
 <div class="code-box">
 class Kendaraan {}
 
 class Mobil extends Kendaraan {
-  void klakson() {
-    print('Tin!');
-  }
-}
-
-void main() {
-  Kendaraan k = Mobil();
-
-  if (k is Mobil) {
-    k.klakson();
-  }
-
-  (k as Mobil?)?.klakson();
+  void klakson() => print("Tin!");
 }
 </div>
 <button onclick="runDart('f3','https://dartpad.dev/embed-flutter.html?id=985fc039a838958b54b59daced97342b')">Run Dart</button>
@@ -175,22 +150,16 @@ void main() {
 
 <!-- 4 -->
 <div class="card">
-<h2>4. Abstract Class Kendaraan</h2>
-<p>Abstraksi sebagai dasar class turunan.</p>
+<img src="https://cdn-icons-png.flaticon.com/512/854/854894.png">
+<h2>4. Abstract Kendaraan</h2>
+<p>Abstraksi sebagai dasar class.</p>
 <div class="code-box">
 abstract class Kendaraan {
   void jalan();
 }
 
 class Mobil extends Kendaraan {
-  void jalan() {
-    print("Mobil berjalan");
-  }
-}
-
-void main() {
-  Mobil m = Mobil();
-  m.jalan();
+  void jalan() => print("Mobil jalan");
 }
 </div>
 <button onclick="runDart('f4','https://dartpad.dev/embed-flutter.html?id=f9e85ea1387eae713f9048757cd5c97d')">Run Dart</button>
@@ -199,32 +168,16 @@ void main() {
 
 <!-- 5 -->
 <div class="card">
-<h2>5. Class AlatMusik (Abstraksi)</h2>
-<p>Abstract class dengan method abstract dan concrete.</p>
+<img src="https://cdn-icons-png.flaticon.com/512/727/727218.png">
+<h2>5. Class Alat Musik</h2>
+<p>Abstract class dengan method konkret.</p>
 <div class="code-box">
 abstract class AlatMusik {
-  String nama;
-  AlatMusik(this.nama);
-
   void mainkan();
-
-  void info() {
-    print('Ini adalah alat musik $nama');
-  }
 }
 
 class Gitar extends AlatMusik {
-  Gitar(String nama) : super(nama);
-
-  void mainkan() {
-    print('Gitar $nama berbunyi: Jreng jreng...');
-  }
-}
-
-void main() {
-  Gitar gitar = Gitar("Akustik");
-  gitar.info();
-  gitar.mainkan();
+  void mainkan() => print("Jreng");
 }
 </div>
 <button onclick="runDart('f5','https://dartpad.dev/embed-flutter.html?id=4cbcd9a48cdf3ba3299256cd07e38fd4')">Run Dart</button>
@@ -233,31 +186,16 @@ void main() {
 
 <!-- 6 -->
 <div class="card">
-<h2>6. Class Pesawat (Interface)</h2>
-<p>Implementasi lebih dari satu interface.</p>
+<img src="https://cdn-icons-png.flaticon.com/512/684/684908.png">
+<h2>6. Class Pesawat</h2>
+<p>Implements interface.</p>
 <div class="code-box">
-abstract class Kendaraan {
-  void jalan();
-}
-
 abstract class Terbang {
   void terbang();
 }
 
-class Pesawat extends Kendaraan implements Terbang {
-  void jalan() {
-    print('Pesawat berjalan di landasan');
-  }
-
-  void terbang() {
-    print('Pesawat terbang di udara');
-  }
-}
-
-void main() {
-  Pesawat pesawat = Pesawat();
-  pesawat.jalan();
-  pesawat.terbang();
+class Pesawat implements Terbang {
+  void terbang() => print("Terbang");
 }
 </div>
 <button onclick="runDart('f6','https://dartpad.dev/embed-flutter.html?id=3b8dc0f6aea58918e73caa74605041d2')">Run Dart</button>
@@ -266,20 +204,12 @@ void main() {
 
 <!-- 7 -->
 <div class="card">
-<h2>7. Class MathUtils (Static)</h2>
-<p>Static variable dan method.</p>
+<img src="https://cdn-icons-png.flaticon.com/512/2721/2721279.png">
+<h2>7. Class MathUtils</h2>
+<p>Static method.</p>
 <div class="code-box">
 class MathUtils {
-  static double pi = 3.14;
-
-  static int add(int a, int b) {
-    return a + b;
-  }
-}
-
-void main() {
-  print(MathUtils.pi);
-  print(MathUtils.add(10, 20));
+  static int tambah(int a, int b) => a + b;
 }
 </div>
 <button onclick="runDart('f7','https://dartpad.dev/embed-flutter.html?id=f2850564f91e2111c095f1f7061815ca')">Run Dart</button>
@@ -288,30 +218,12 @@ void main() {
 
 <!-- 8 -->
 <div class="card">
-<h2>8. Class MetodePembayaran (Interface)</h2>
-<p>Interface metode pembayaran.</p>
+<img src="https://cdn-icons-png.flaticon.com/512/2331/2331970.png">
+<h2>8. Metode Pembayaran</h2>
+<p>Interface pembayaran.</p>
 <div class="code-box">
-abstract class MetodePembayaran {
-  void bayar(double jumlah);
-}
-
-class KartuKredit implements MetodePembayaran {
-  void bayar(double jumlah) {
-    print('Membayar Rp$jumlah menggunakan Kartu Kredit');
-  }
-}
-
-class EWallet implements MetodePembayaran {
-  void bayar(double jumlah) {
-    print('Membayar Rp$jumlah menggunakan E-Wallet');
-  }
-}
-
-void main() {
-  KartuKredit kartu = KartuKredit();
-  EWallet ewallet = EWallet();
-  kartu.bayar(50000);
-  ewallet.bayar(25000);
+abstract class Bayar {
+  void proses();
 }
 </div>
 <button onclick="runDart('f8','https://dartpad.dev/embed-flutter.html?id=30d7eb58b28945ee4998758223c35531')">Run Dart</button>
@@ -320,12 +232,14 @@ void main() {
 
 <!-- 9 -->
 <div class="card">
-<h2>9. Class Bentuk Geometri</h2>
-<p>Polimorfisme menghitung luas dan keliling.</p>
+<img src="https://cdn-icons-png.flaticon.com/512/4341/4341025.png">
+<h2>9. Bentuk Geometri</h2>
+<p>Hitung luas.</p>
 <div class="code-box">
-abstract class Bentuk {
-  double hitungLuas();
-  double hitungKeliling();
+class Persegi {
+  int s;
+  Persegi(this.s);
+  int luas() => s*s;
 }
 </div>
 <button onclick="runDart('f9','https://dartpad.dev/embed-flutter.html?id=c350c82b3cc671251063832e6b0c19df')">Run Dart</button>
@@ -333,88 +247,4 @@ abstract class Bentuk {
 </div>
 
 <!-- 10 -->
-<div class="card">
-<h2>10. Class Programmer</h2>
-<p>Inheritance dari Pekerja.</p>
-<div class="code-box">
-abstract class Pekerja {
-  String nama;
-  Pekerja(this.nama);
-  void bekerja();
-}
-
-class Programmer extends Pekerja {
-  Programmer(String nama) : super(nama);
-
-  void bekerja() {
-    print("$nama bekerja sebagai Programmer");
-  }
-}
-
-void main() {
-  Programmer p = Programmer("Andi");
-  p.bekerja();
-}
-</div>
-<button onclick="runDart('f10','https://dartpad.dev/embed-flutter.html?id=192859027ed0a9a63a7bcb9ffce7bbd4')">Run Dart</button>
-<iframe id="f10"></iframe>
-</div>
-
-<!-- 11 -->
-<div class="card">
-<h2>11. Multi Class Pekerja</h2>
-<div class="code-box">
-abstract class Pekerja {
-  String nama;
-  Pekerja(this.nama);
-  void bekerja();
-}
-</div>
-<button onclick="runDart('f11','https://dartpad.dev/embed-flutter.html?id=3c0d98f4423954c616b846a6e244a9d2')">Run Dart</button>
-<iframe id="f11"></iframe>
-</div>
-
-<!-- 12 -->
-<div class="card">
-<h2>12. Polimorfisme List</h2>
-<div class="code-box">
-void main() {
-  // Polimorfisme List
-}
-</div>
-<button onclick="runDart('f12','https://dartpad.dev/embed-flutter.html?id=1d346ba1594eeb7437e3492f50ce60e0')">Run Dart</button>
-<iframe id="f12"></iframe>
-</div>
-
-<!-- 13 -->
-<div class="card">
-<h2>13. Class Tablet</h2>
-<div class="code-box">
-class Tablet {}
-</div>
-<button onclick="runDart('f13','https://dartpad.dev/embed-flutter.html?id=5e1bf40dc32c12ec326f796f912dbbd1')">Run Dart</button>
-<iframe id="f13"></iframe>
-</div>
-
-<!-- 14 -->
-<div class="card">
-<h2>14. MathUtils Advanced</h2>
-<div class="code-box">
-import 'dart:math';
-</div>
-<button onclick="runDart('f14','https://dartpad.dev/embed-flutter.html?id=0011f7b4b5bfed2a0ab49e4c9e12229d')">Run Dart</button>
-<iframe id="f14"></iframe>
-</div>
-
-<!-- Kesimpulan -->
-<div class="card">
-<h2>Kesimpulan</h2>
-<p>
-Polimorfisme adalah kemampuan method memiliki banyak bentuk, sedangkan abstraksi adalah proses menyembunyikan detail implementasi. 
-Dengan konsep OOP seperti inheritance, interface, dan static, program menjadi lebih terstruktur, mudah dikembangkan, dan reusable.
-</p>
-</div>
-
-</div>
-</body>
-</html>
+<div class="card
