@@ -138,13 +138,16 @@ iframe {
 <script>
 function runDart(id, link){
     var frame = document.getElementById(id);
-    // Toggle visibility
     if (frame.style.display === "block") {
         frame.style.display = "none";
-        frame.src = ""; // Clear src to stop execution
+        frame.src = "";
     } else {
         frame.style.display = "block";
-        frame.src = link + "&run=true";
+        if(link.indexOf('?') !== -1){
+            frame.src = link + "&run=true";
+        } else {
+            frame.src = link + "?run=true";
+        }
     }
 }
 </script>
