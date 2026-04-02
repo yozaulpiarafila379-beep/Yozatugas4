@@ -16,6 +16,7 @@ body {font-family: Arial; background:#eef2f7; margin:0; padding:20px;}
     box-shadow:0 4px 10px rgba(0,0,0,0.08);
     margin-bottom:25px;
 }
+.card:hover { transform: scale(1.01); transition: 0.3s; }
 pre {
     background:#f5f5f5;
     padding:15px;
@@ -29,6 +30,7 @@ button {
     padding:8px 15px;
     border-radius:6px;
     cursor:pointer;
+    margin-top:5px;
 }
 iframe {
     width:100%;
@@ -47,11 +49,13 @@ function tampilkan(id){
         x.style.display = "none";
     }
 }
+function runDart(id, link){
+    document.getElementById(id).src = link;
+}
 </script>
 
 </head>
 <body>
-
 <div class="container">
 
 <div class="header">
@@ -61,144 +65,223 @@ function tampilkan(id){
 <p>Kelas: SI2A</p>
 </div>
 
+<!-- TEMPLATE CARD -->
+<!-- Ganti nomor, penjelasan, id kX dan fX -->
+
 <!-- 1 -->
 <div class="card">
 <h2>1. Polimorfisme Overriding</h2>
-<p>Method overriding adalah method yang ditimpa dari parent class.</p>
-<button onclick="tampilkan('k1')">Tampilkan Kode</button>
-<pre id="k1">
-Nama  : Yoza Ulpia Rafila
-NIM   : 251410004
-Kelas : SI2A
-Contoh Polimorfisme Overriding
-</pre>
-<iframe src="https://dartpad.dev/embed-flutter.html?id=569d91a7d55a7348d68fff15153e81f8&run=true"></iframe>
+<p>Polimorfisme overriding adalah kemampuan class anak menimpa method dari class induk.</p>
+<button onclick="tampilkan('k1')">Tampilkan Class</button>
+<button onclick="runDart('f1','https://dartpad.dev/embed-flutter.html?id=569d91a7d55a7348d68fff15153e81f8&run=true')">Run Dart</button>
+<pre id="k1">class Hewan {
+  void suara() { print("Hewan bersuara"); }
+}
+class Kucing extends Hewan {
+  @override
+  void suara() { print("Kucing mengeong"); }
+}
+void main() {
+  Hewan h = Kucing();
+  h.suara();
+}</pre>
+<iframe id="f1" src="https://dartpad.dev/embed-flutter.html?id=569d91a7d55a7348d68fff15153e81f8&run=true"></iframe>
 </div>
 
 <!-- 2 -->
 <div class="card">
 <h2>2. Named Constructor</h2>
-<p>Named constructor adalah constructor dengan nama.</p>
-<button onclick="tampilkan('k2')">Tampilkan Kode</button>
-<pre id="k2">Contoh Named Constructor</pre>
-<iframe src="https://dartpad.dev/embed-flutter.html?id=51f1e01964dbc6a42f15ae6de6d01cd7&run=true"></iframe>
+<p>Named constructor adalah constructor yang memiliki nama.</p>
+<button onclick="tampilkan('k2')">Tampilkan Class</button>
+<button onclick="runDart('f2','https://dartpad.dev/embed-flutter.html?id=51f1e01964dbc6a42f15ae6de6d01cd7&run=true')">Run Dart</button>
+<pre id="k2">class Mahasiswa {
+  String nama;
+  int umur;
+  Mahasiswa(this.nama, this.umur);
+  Mahasiswa.lulus(this.nama){ umur = 22; }
+}</pre>
+<iframe id="f2" src="https://dartpad.dev/embed-flutter.html?id=51f1e01964dbc6a42f15ae6de6d01cd7&run=true"></iframe>
 </div>
 
 <!-- 3 -->
 <div class="card">
 <h2>3. Abstraksi</h2>
-<p>Abstraksi menyembunyikan detail dan hanya menampilkan fungsi penting.</p>
-<button onclick="tampilkan('k3')">Tampilkan Kode</button>
-<pre id="k3">Contoh Abstraksi</pre>
-<iframe src="https://dartpad.dev/embed-flutter.html?id=985fc039a838958b54b59daced97342b&run=true"></iframe>
+<p>Abstraksi adalah menyembunyikan detail implementasi.</p>
+<button onclick="tampilkan('k3')">Tampilkan Class</button>
+<button onclick="runDart('f3','https://dartpad.dev/embed-flutter.html?id=985fc039a838958b54b59daced97342b&run=true')">Run Dart</button>
+<pre id="k3">abstract class Kendaraan {
+  void jalan();
+}
+class Mobil extends Kendaraan {
+  void jalan() { print("Mobil berjalan"); }
+}</pre>
+<iframe id="f3" src="https://dartpad.dev/embed-flutter.html?id=985fc039a838958b54b59daced97342b&run=true"></iframe>
 </div>
 
 <!-- 4 -->
 <div class="card">
 <h2>4. Interface</h2>
-<p>Interface adalah class tanpa implementasi.</p>
-<button onclick="tampilkan('k4')">Tampilkan Kode</button>
-<pre id="k4">Contoh Interface</pre>
-<iframe src="https://dartpad.dev/embed-flutter.html?id=f9e85ea1387eae713f9048757cd5c97d&run=true"></iframe>
+<p>Interface adalah class yang harus diimplementasikan.</p>
+<button onclick="tampilkan('k4')">Tampilkan Class</button>
+<button onclick="runDart('f4','https://dartpad.dev/embed-flutter.html?id=f9e85ea1387eae713f9048757cd5c97d&run=true')">Run Dart</button>
+<pre id="k4">abstract class Bentuk {
+  void gambar();
+}
+class Lingkaran implements Bentuk {
+  void gambar() { print("Gambar Lingkaran"); }
+}</pre>
+<iframe id="f4" src="https://dartpad.dev/embed-flutter.html?id=f9e85ea1387eae713f9048757cd5c97d&run=true"></iframe>
 </div>
 
 <!-- 5 -->
 <div class="card">
 <h2>5. Inheritance</h2>
-<p>Inheritance adalah pewarisan dari class induk ke anak.</p>
-<button onclick="tampilkan('k5')">Tampilkan Kode</button>
-<pre id="k5">Contoh Inheritance</pre>
-<iframe src="https://dartpad.dev/embed-flutter.html?id=4cbcd9a48cdf3ba3299256cd07e38fd4&run=true"></iframe>
+<p>Inheritance adalah pewarisan sifat.</p>
+<button onclick="tampilkan('k5')">Tampilkan Class</button>
+<button onclick="runDart('f5','https://dartpad.dev/embed-flutter.html?id=4cbcd9a48cdf3ba3299256cd07e38fd4&run=true')">Run Dart</button>
+<pre id="k5">class Hewan {
+  String nama = "Kucing";
+}
+class Kucing extends Hewan {
+  void tampil() { print(nama); }
+}</pre>
+<iframe id="f5" src="https://dartpad.dev/embed-flutter.html?id=4cbcd9a48cdf3ba3299256cd07e38fd4&run=true"></iframe>
 </div>
 
 <!-- 6 -->
 <div class="card">
 <h2>6. Overloading</h2>
-<p>Overloading adalah method dengan nama sama tetapi parameter berbeda.</p>
-<button onclick="tampilkan('k6')">Tampilkan Kode</button>
-<pre id="k6">Contoh Overloading</pre>
-<iframe src="https://dartpad.dev/embed-flutter.html?id=3b8dc0f6aea58918e73caa74605041d2&run=true"></iframe>
+<p>Overloading adalah method dengan parameter berbeda.</p>
+<button onclick="tampilkan('k6')">Tampilkan Class</button>
+<button onclick="runDart('f6','https://dartpad.dev/embed-flutter.html?id=3b8dc0f6aea58918e73caa74605041d2&run=true')">Run Dart</button>
+<pre id="k6">class Hitung {
+  int tambah(int a, int b, [int c = 0]) {
+    return a + b + c;
+  }
+}</pre>
+<iframe id="f6" src="https://dartpad.dev/embed-flutter.html?id=3b8dc0f6aea58918e73caa74605041d2&run=true"></iframe>
 </div>
 
 <!-- 7 -->
 <div class="card">
 <h2>7. Encapsulation</h2>
-<p>Encapsulation menyembunyikan data dengan getter dan setter.</p>
-<button onclick="tampilkan('k7')">Tampilkan Kode</button>
-<pre id="k7">Contoh Encapsulation</pre>
-<iframe src="https://dartpad.dev/embed-flutter.html?id=f2850564f91e2111c095f1f7061815ca&run=true"></iframe>
+<p>Encapsulation adalah menyembunyikan data.</p>
+<button onclick="tampilkan('k7')">Tampilkan Class</button>
+<button onclick="runDart('f7','https://dartpad.dev/embed-flutter.html?id=f2850564f91e2111c095f1f7061815ca&run=true')">Run Dart</button>
+<pre id="k7">class Mahasiswa {
+  String _nama;
+  void setNama(String nama){ _nama = nama; }
+  String getNama(){ return _nama; }
+}</pre>
+<iframe id="f7" src="https://dartpad.dev/embed-flutter.html?id=f2850564f91e2111c095f1f7061815ca&run=true"></iframe>
 </div>
 
 <!-- 8 -->
 <div class="card">
 <h2>8. Abstract Class</h2>
-<p>Abstract class tidak bisa dibuat objek langsung.</p>
-<button onclick="tampilkan('k8')">Tampilkan Kode</button>
-<pre id="k8">Contoh Abstract Class</pre>
-<iframe src="https://dartpad.dev/embed-flutter.html?id=30d7eb58b28945ee4998758223c35531&run=true"></iframe>
+<p>Abstract class tidak bisa dibuat objek.</p>
+<button onclick="tampilkan('k8')">Tampilkan Class</button>
+<button onclick="runDart('f8','https://dartpad.dev/embed-flutter.html?id=30d7eb58b28945ee4998758223c35531&run=true')">Run Dart</button>
+<pre id="k8">abstract class Hewan {
+  void suara();
+}
+class Sapi extends Hewan {
+  void suara(){ print("Moo"); }
+}</pre>
+<iframe id="f8" src="https://dartpad.dev/embed-flutter.html?id=30d7eb58b28945ee4998758223c35531&run=true"></iframe>
 </div>
 
 <!-- 9 -->
 <div class="card">
 <h2>9. Polimorfisme</h2>
-<p>Polimorfisme berarti satu objek memiliki banyak bentuk.</p>
-<button onclick="tampilkan('k9')">Tampilkan Kode</button>
-<pre id="k9">Contoh Polimorfisme</pre>
-<iframe src="https://dartpad.dev/embed-flutter.html?id=c350c82b3cc671251063832e6b0c19df&run=true"></iframe>
+<p>Polimorfisme adalah banyak bentuk dalam satu method.</p>
+<button onclick="tampilkan('k9')">Tampilkan Class</button>
+<button onclick="runDart('f9','https://dartpad.dev/embed-flutter.html?id=c350c82b3cc671251063832e6b0c19df&run=true')">Run Dart</button>
+<pre id="k9">class Hewan {
+  void suara() { print("Hewan bersuara"); }
+}
+class Ayam extends Hewan {
+  void suara() { print("Kukuruyuk"); }
+}</pre>
+<iframe id="f9" src="https://dartpad.dev/embed-flutter.html?id=c350c82b3cc671251063832e6b0c19df&run=true"></iframe>
 </div>
 
 <!-- 10 -->
 <div class="card">
 <h2>10. Static</h2>
-<p>Static adalah milik class, bukan objek.</p>
-<button onclick="tampilkan('k10')">Tampilkan Kode</button>
-<pre id="k10">Contoh Static</pre>
-<iframe src="https://dartpad.dev/embed-flutter.html?id=192859027ed0a9a63a7bcb9ffce7bbd4&run=true"></iframe>
+<p>Static dapat dipanggil tanpa objek.</p>
+<button onclick="tampilkan('k10')">Tampilkan Class</button>
+<button onclick="runDart('f10','https://dartpad.dev/embed-flutter.html?id=192859027ed0a9a63a7bcb9ffce7bbd4&run=true')">Run Dart</button>
+<pre id="k10">class Matematika {
+  static int tambah(int a, int b) {
+    return a + b;
+  }
+}</pre>
+<iframe id="f10" src="https://dartpad.dev/embed-flutter.html?id=192859027ed0a9a63a7bcb9ffce7bbd4&run=true"></iframe>
 </div>
 
 <!-- 11 -->
 <div class="card">
-<h2>11. Class Object</h2>
-<p>Class adalah blueprint dan object adalah hasilnya.</p>
-<button onclick="tampilkan('k11')">Tampilkan Kode</button>
-<pre id="k11">Contoh Class Object</pre>
-<iframe src="https://dartpad.dev/embed-flutter.html?id=3c0d98f4423954c616b846a6e244a9d2&run=true"></iframe>
+<h2>11. Class dan Object</h2>
+<p>Class adalah blueprint, object adalah hasilnya.</p>
+<button onclick="tampilkan('k11')">Tampilkan Class</button>
+<button onclick="runDart('f11','https://dartpad.dev/embed-flutter.html?id=3c0d98f4423954c616b846a6e244a9d2&run=true')">Run Dart</button>
+<pre id="k11">class Mobil {
+  String merk = "Toyota";
+}</pre>
+<iframe id="f11" src="https://dartpad.dev/embed-flutter.html?id=3c0d98f4423954c616b846a6e244a9d2&run=true"></iframe>
 </div>
 
 <!-- 12 -->
 <div class="card">
 <h2>12. Constructor</h2>
-<p>Constructor digunakan untuk inisialisasi objek.</p>
-<button onclick="tampilkan('k12')">Tampilkan Kode</button>
-<pre id="k12">Contoh Constructor</pre>
-<iframe src="https://dartpad.dev/embed-flutter.html?id=1d346ba1594eeb7437e3492f50ce60e0&run=true"></iframe>
+<p>Constructor dijalankan saat objek dibuat.</p>
+<button onclick="tampilkan('k12')">Tampilkan Class</button>
+<button onclick="runDart('f12','https://dartpad.dev/embed-flutter.html?id=1d346ba1594eeb7437e3492f50ce60e0&run=true')">Run Dart</button>
+<pre id="k12">class Mahasiswa {
+  String nama;
+  Mahasiswa(this.nama);
+}</pre>
+<iframe id="f12" src="https://dartpad.dev/embed-flutter.html?id=1d346ba1594eeb7437e3492f50ce60e0&run=true"></iframe>
 </div>
 
 <!-- 13 -->
 <div class="card">
 <h2>13. This Keyword</h2>
-<p>This digunakan untuk merujuk ke objek saat ini.</p>
-<button onclick="tampilkan('k13')">Tampilkan Kode</button>
-<pre id="k13">Contoh This Keyword</pre>
-<iframe src="https://dartpad.dev/embed-flutter.html?id=5e1bf40dc32c12ec326f796f912dbbd1&run=true"></iframe>
+<p>This digunakan untuk menunjuk objek saat ini.</p>
+<button onclick="tampilkan('k13')">Tampilkan Class</button>
+<button onclick="runDart('f13','https://dartpad.dev/embed-flutter.html?id=5e1bf40dc32c12ec326f796f912dbbd1&run=true')">Run Dart</button>
+<pre id="k13">class Mahasiswa {
+  String nama;
+  Mahasiswa(String nama){
+    this.nama = nama;
+  }
+}</pre>
+<iframe id="f13" src="https://dartpad.dev/embed-flutter.html?id=5e1bf40dc32c12ec326f796f912dbbd1&run=true"></iframe>
 </div>
 
 <!-- 14 -->
 <div class="card">
-<h2>14. BONUS</h2>
-<p>Contoh tambahan konsep OOP.</p>
-<button onclick="tampilkan('k14')">Tampilkan Kode</button>
-<pre id="k14">Contoh Bonus OOP</pre>
-<iframe src="https://dartpad.dev/embed-flutter.html?id=0011f7b4b5bfed2a0ab49e4c9e12229d&run=true"></iframe>
+<h2>14. Program Luas Persegi</h2>
+<p>Contoh program OOP menghitung luas persegi.</p>
+<button onclick="tampilkan('k14')">Tampilkan Class</button>
+<button onclick="runDart('f14','https://dartpad.dev/embed-flutter.html?id=0011f7b4b5bfed2a0ab49e4c9e12229d&run=true')">Run Dart</button>
+<pre id="k14">class Persegi {
+  int sisi;
+  Persegi(this.sisi);
+  int luas(){
+    return sisi * sisi;
+  }
+}</pre>
+<iframe id="f14" src="https://dartpad.dev/embed-flutter.html?id=0011f7b4b5bfed2a0ab49e4c9e12229d&run=true"></iframe>
 </div>
 
 <!-- Kesimpulan -->
 <div class="card">
 <h2>Kesimpulan</h2>
 <p>
-Polimorfisme memungkinkan satu method memiliki banyak bentuk,
-sedangkan abstraksi menyembunyikan detail program.
-Dengan konsep OOP, program menjadi lebih terstruktur, fleksibel, dan reusable.
+Dari praktikum ini dapat disimpulkan bahwa OOP memiliki banyak konsep seperti Polimorfisme, Abstraksi, Inheritance, Encapsulation, Interface, Constructor, dan lainnya. 
+Dengan OOP program menjadi lebih rapi, mudah dikembangkan, dan dapat digunakan kembali.
 </p>
 </div>
 
