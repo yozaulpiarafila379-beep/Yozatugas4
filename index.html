@@ -888,16 +888,24 @@ print("$nama sedang mengajar");
 }
 
 void main() {
-List<Pekerja> daftar = [
-Programmer("Andi"),
-Dokter("Budi"),
-Guru("Citra"),
-];
+  print("=== Polimorfisme List ===");
+  // TAMBAHKAN INI
+  print("Nama : Yoza Ulpia Rafila");
+  print("NIM        : 251410004");
+  print("Kelas : SI2A");
+  print("--------------------------------");
 
-for(var p in daftar) {
-p.bekerja();
+  List<Pekerja> daftar = [
+    Programmer("Andi"),
+    Dokter("Budi"),
+    Guru("Citra"),
+  ];
+
+  for(var p in daftar) {
+    p.bekerja();
+  }
 }
-}
+
 
 /*
 Hasil Output:
