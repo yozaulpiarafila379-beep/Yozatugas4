@@ -139,7 +139,8 @@ iframe {
 function runDart(id, link){
     var frame = document.getElementById(id);
     frame.style.display = "block";
-    frame.src = link + "&run=true&v=" + new Date().getTime();
+    frame.src = "";
+    frame.src = link + "&run=true&v=" + Date.now();
 }
 </script>
 </head>
