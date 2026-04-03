@@ -137,14 +137,21 @@ iframe {
 
 <script>
 function runDart(id, link){
+    // Sembunyikan semua iframe dan hentikan program
     document.querySelectorAll("iframe").forEach(f => {
         f.style.display = "none";
         f.src = "";
     });
 
+    // Tampilkan iframe
     var frame = document.getElementById(id);
     frame.style.display = "block";
-    frame.src = link + "&run=true";
+    frame.src = link;
+
+    // Auto run setelah DartPad siap
+    setTimeout(function(){
+        frame.src = link + "&run=true";
+    }, 1000);
 }
 </script>
 </head>
