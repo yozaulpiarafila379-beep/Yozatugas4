@@ -137,10 +137,16 @@ iframe {
 
 <script>
 function runDart(id, link){
+    // Sembunyikan semua iframe dan hentikan yang sedang berjalan
+    document.querySelectorAll("iframe").forEach(f => {
+        f.style.display = "none";
+        f.src = "";
+    });
+
+    // Tampilkan iframe yang dipilih
     var frame = document.getElementById(id);
     frame.style.display = "block";
-    frame.src = "";
-    frame.src = link + "&run=true&v=" + Date.now();
+    frame.src = link;
 }
 </script>
 </head>
